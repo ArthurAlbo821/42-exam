@@ -65,8 +65,10 @@ deviennent automatiques.
 1. Le sujet du niveau s'affiche dans le terminal, et le dossier de
    l'exercice est préparé : `subject.txt` + fichiers `.c` vides déjà créés.
 2. Code ta solution dans `rendu/<nom_exercice>/` (examen) ou
-   `entrainement/<nom_exercice>/` (drill) — tape `code` pour ouvrir le
-   dossier dans VS Code.
+   `entrainement/<nom_exercice>/` (drill). Tape **`code`** dans le terminal
+   pour ouvrir l'exercice dans VS Code. Ensuite, à chaque exercice validé,
+   VS Code **bascule tout seul** sur le suivant dans la même fenêtre
+   (l'ancien exercice disparaît de l'explorateur).
 3. Tape `grademe` dans l'examshell :
    - compilation `cc -Wall -Wextra -Werror` (le moindre warning = échec),
    - vérification des fonctions interdites (via `nm`),

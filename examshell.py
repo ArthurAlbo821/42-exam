@@ -140,8 +140,13 @@ def show_subject(meta, right="", where="rendu"):
     print(subject)
     ui.hr()
     print(f" {YELLOW}▸{RESET} Code dans {BOLD}{where}/{meta['name']}/{RESET}"
-          f"   {ui.DIM}(sujet + fichiers déjà créés — "
-          f"tape 'code' pour ouvrir VS Code){RESET}\n")
+          f"   {ui.DIM}(sujet + fichiers .c déjà créés){RESET}")
+    if _vscode_active:
+        print(f" {ui.GREEN}▸{RESET} VS Code a basculé sur ce nouvel "
+              f"exercice.\n")
+    else:
+        print(f" {ui.CYAN}▸ Tape {BOLD}code{RESET}{ui.CYAN} + Entrée pour "
+              f"ouvrir cet exercice dans VS Code.{RESET}\n")
 
 
 def install_exercise(meta, workdir=None):
@@ -156,20 +161,43 @@ def install_exercise(meta, workdir=None):
             open(path, "a").close()
 
 
-def open_in_vscode(path):
+# Set once the student has opened VS Code from the shell; only then do we
+# auto-swap the window to the next exercise (so people using another editor
+# are never interrupted).
+_vscode_active = False
+
+
+def open_in_vscode(path, quiet=False):
+    """Open `path` in VS Code, reusing the same window (-r) so the previous
+    exercise is replaced rather than piling up new windows."""
+    global _vscode_active
     if shutil.which("code"):
-        subprocess.Popen(["code", path],
+        subprocess.Popen(["code", "-r", path],
                          stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        print(f"{ui.DIM}Ouvert dans VS Code : "
-              f"{os.path.relpath(path, ROOT)}{RESET}")
-        return
+        _vscode_active = True
+        if not quiet:
+            print(f"{ui.DIM}Ouvert dans VS Code : "
+                  f"{os.path.relpath(path, ROOT)}{RESET}")
+        return True
     res = subprocess.run(["open", "-a", "Visual Studio Code", path],
                          capture_output=True)
     if res.returncode == 0:
-        print(f"{ui.DIM}Ouvert dans VS Code.{RESET}")
-    else:
+        _vscode_active = True
+        if not quiet:
+            print(f"{ui.DIM}Ouvert dans VS Code.{RESET}")
+        return True
+    if not quiet:
         print(f"{YELLOW}VS Code introuvable — ouvre {path} toi-même "
-              f"(installe la commande 'code' via la palette VS Code).{RESET}")
+              f"(installe la commande 'code' via la palette VS Code : "
+              f"Cmd+Shift+P → 'Shell Command: Install code command').{RESET}")
+    return False
+
+
+def auto_open_next(path):
+    """After a passed exercise, swap the VS Code window to the next one —
+    but only if the student has been using VS Code this session."""
+    if _vscode_active:
+        open_in_vscode(path, quiet=True)
 
 
 def assign_exercise(state, levels, pool):
@@ -467,6 +495,7 @@ def repl(state, pool, levels):
                                 "Congratulations, you cleared every level!")
                     return
                 meta = assign_exercise(state, levels, pool)
+                auto_open_next(os.path.join(RENDU_DIR, meta["name"]))
                 show_subject(meta,
                              fmt_duration(clock.remaining()) + " restant")
         elif cmd == "subject":

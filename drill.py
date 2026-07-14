@@ -116,6 +116,8 @@ def assign(stats, pool, name, reason, fresh=True):
     if stats["current"] is None or stats["current"]["name"] != name:
         stats["current"] = {"name": name, "elapsed": 0.0, "attempts": 0}
     save_stats(stats)
+    if fresh:
+        ex.auto_open_next(os.path.join(WORKDIR, meta["name"]))
     best = ex.fmt_duration(e["best_time"]) if e["best_time"] else "—"
     ex.show_subject(meta, f"record {best}", where="entrainement")
     print(f" {YELLOW}◆{RESET} {reason}   "
