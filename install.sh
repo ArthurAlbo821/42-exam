@@ -19,7 +19,7 @@ case ":$PATH:" in
 	bash) RC="$HOME/.bashrc" ;;
 	*) RC="$HOME/.zshrc" ;;
 	esac
-	if ! grep -qs '\.local/bin' "$RC"; then
+	if ! grep -qs '^[^#]*\.local/bin' "$RC"; then
 		printf '\nexport PATH="$HOME/.local/bin:$PATH"\n' >>"$RC"
 		echo "✔ PATH mis à jour dans $RC"
 	fi
