@@ -19,7 +19,6 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 EXERCISES_DIR = os.path.join(ROOT, "data", "exercises")
 RENDU_DIR = os.path.join(ROOT, "rendu")
 EXAM_ARCHIVE_DIR = os.path.join(ROOT, ".exam_archive")
-TRACES_DIR = os.path.join(ROOT, "traces")
 BUILD_DIR = os.path.join(ROOT, ".build-%d" % os.getpid())
 STATE_FILE = os.path.join(ROOT, ".exam_state.json")
 HISTORY_FILE = os.path.join(ROOT, "history.txt")
@@ -343,14 +342,23 @@ def grade(meta, workdir=None):
             "\n".join(failures))
 
 
-def write_trace(meta, failure):
-    os.makedirs(TRACES_DIR, exist_ok=True)
-    path = os.path.join(TRACES_DIR, meta["name"] + ".trace")
+def write_trace(meta, failure, workdir=None):
+    """Write trace.txt next to the student's code so it shows in VS Code."""
+    folder = os.path.join(workdir or RENDU_DIR, meta["name"])
+    os.makedirs(folder, exist_ok=True)
+    path = os.path.join(folder, "trace.txt")
     with open(path, "w") as f:
         f.write(f"Exercise : {meta['name']} (level {meta['level']})\n")
         f.write(f"Verdict  : KO — {failure.title}\n\n")
         f.write(failure.detail.rstrip() + "\n")
     return path
+
+
+def clear_trace(meta, workdir=None):
+    """A passing exercise must not keep a stale failure trace."""
+    path = os.path.join(workdir or RENDU_DIR, meta["name"], "trace.txt")
+    if os.path.isfile(path):
+        os.remove(path)
 
 
 # -------------------------------------------------------------------- exam
@@ -403,6 +411,7 @@ def cmd_grademe(state, clock, meta):
               f"{os.path.relpath(trace, ROOT)} — corrige puis retape "
               f"'grademe'.{RESET}\n")
         return False
+    clear_trace(meta)
     state["score"] += POINTS_PER_LEVEL
     state["passed"].append(name)
     state["level"] += 1

@@ -2,7 +2,6 @@
 # propres à chaque étudiant : ne jamais les committer.
 rendu/
 entrainement/
-traces/
 .exam_state.json
 .exam_archive/
 .drill_stats.json

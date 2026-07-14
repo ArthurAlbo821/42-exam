@@ -183,7 +183,7 @@ def grade_current(stats, meta, started):
                         f"(chrono {ex.fmt_duration(elapsed)})"):
             ex.grade(meta, workdir=WORKDIR)
     except ex.GradeFailure as failure:
-        trace = ex.write_trace(meta, failure)
+        trace = ex.write_trace(meta, failure, workdir=WORKDIR)
         e["fails"] += 1
         save_stats(stats)
         ui.ko(failure.title)
@@ -202,6 +202,7 @@ def grade_current(stats, meta, started):
         e["best_time"] = elapsed
     stats["current"] = None
     save_stats(stats)
+    ex.clear_trace(meta, workdir=WORKDIR)
     archive_exercise(name)  # l'espace drill ne garde que l'exo en cours
     tag = " · du premier coup !" if first_try else ""
     ui.ok(f"{name} réussi{tag}", ex.fmt_duration(elapsed))

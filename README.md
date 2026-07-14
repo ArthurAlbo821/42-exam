@@ -17,8 +17,7 @@ Prérequis : `python3` et `cc` (déjà présents sur les Macs de 42).
 
 Au premier lancement, le programme crée automatiquement tes dossiers de
 travail locaux (`rendu/` pour l'examen, `entrainement/` pour le drill,
-`traces/`, sessions, stats) — ils restent sur ta machine et ne sont
-jamais commités.
+sessions, stats) — ils restent sur ta machine et ne sont jamais commités.
 
 ## Le menu
 
@@ -73,7 +72,9 @@ deviennent automatiques.
    - vérification des fonctions interdites (via `nm`),
    - tests comparés à une solution de référence (diff byte à byte).
 4. **OK** → +5 points, niveau suivant. **KO** → le détail de l'échec est
-   écrit dans `traces/<exercice>.trace`, corrige et retente (essais illimités).
+   écrit dans le `trace.txt` du dossier de l'exercice — visible directement
+   dans VS Code à côté de ton code, et supprimé dès que ça passe. Corrige et
+   retente (essais illimités).
 
 ## Commandes de l'examshell
 
@@ -117,6 +118,6 @@ validate.py       auto-test du pool (les solutions de référence doivent passer
 data/exercises/   un dossier par exercice (sujet, solution de référence, tests)
 rendu/            TES solutions d'examen (créé au lancement)
 entrainement/     l'exercice de drill en cours (créé au lancement)
-traces/           traces d'échec de grademe
 history.txt       scores des examens terminés
+
 ```
