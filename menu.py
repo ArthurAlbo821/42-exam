@@ -107,9 +107,10 @@ def exam_menu():
         ]
         pick = choose("Un examen est en cours :", items)
         if pick == 0:
-            return ex.run_resume()
+            ex.run_resume()
+            return True
         if pick != 1:
-            return
+            return False
     items = [
         ("🌊", "Examen 4h", "format révision (défaut)"),
         ("🔥", "Examen 8h", "conditions réelles du vrai final"),
@@ -118,8 +119,11 @@ def exam_menu():
     pick = choose("Durée de l'examen ?", items)
     if pick == 0:
         ex.run_new(4 * 3600)
+        return True
     elif pick == 1:
         ex.run_new(8 * 3600)
+        return True
+    return False
 
 
 def drill_menu():
@@ -131,8 +135,11 @@ def drill_menu():
     pick = choose("Quelle zone d'entraînement ?", items)
     if pick == 0:
         drill.repl("60")
+        return True
     elif pick == 1:
         drill.repl("malloc")
+        return True
+    return False
 
 
 def stats_screen():
@@ -162,9 +169,11 @@ def main():
         ]
         pick = choose("Que veux-tu faire ?", items)
         if pick == 0:
-            exam_menu()
+            if exam_menu():
+                pause()
         elif pick == 1:
-            drill_menu()
+            if drill_menu():
+                pause()
         elif pick == 2:
             stats_screen()
         else:

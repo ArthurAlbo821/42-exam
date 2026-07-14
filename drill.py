@@ -35,13 +35,17 @@ WORKDIR = os.path.join(ex.ROOT, "entrainement")  # séparé du rendu/ d'examen
 
 BOLD, GREEN, RED, YELLOW, CYAN, RESET = (
     ex.BOLD, ex.GREEN, ex.RED, ex.YELLOW, ex.CYAN, ex.RESET)
+DIM, MAGENTA = ui.DIM, ui.MAGENTA
 
 
 def load_stats():
     if os.path.isfile(STATS_FILE):
         with open(STATS_FILE) as f:
-            return json.load(f)
-    return {"exercises": {}, "picks": 0, "current": None}
+            stats = json.load(f)
+    else:
+        stats = {"exercises": {}, "picks": 0, "current": None}
+    stats.setdefault("total_seconds", 0.0)
+    return stats
 
 
 def save_stats(stats):
@@ -126,37 +130,118 @@ def assign(stats, pool, name, reason, fresh=True):
     return meta
 
 
-def fmt_line(name, meta, e):
-    if e is None:
-        state, color = "· jamais fait", ""
-    elif acquired(e):
-        state, color = "✓ acquis", GREEN
-    elif e["passes"] > 0:
-        state, color = "~ en cours", YELLOW
-    else:
-        state, color = "✗ à travailler", RED
-    best = (" best " + ex.fmt_duration(e["best_time"])
-            if e and e["best_time"] else "")
-    hist = (f"  {e['passes']}✓/{e['fails']}✗/{e['skips']}→"
-            if e else "")
-    return (f"  {color}{state:<15}{RESET} L{meta['level']:>2} "
-            f"{name:<28}{hist}{best}")
+PASTILLE = {
+    "done":  (GREEN, "●"),
+    "wip":   (YELLOW, "◐"),
+    "todo":  (RED, "○"),
+    "never": (DIM, "·"),
+}
+
+
+def status_of(e):
+    if e is None or (e["passes"] == 0 and e["fails"] == 0
+                     and e["skips"] == 0):
+        return "never"
+    if acquired(e):
+        return "done"
+    if e["passes"] > 0:
+        return "wip"
+    return "todo"  # tenté mais jamais réussi
+
+
+def pastille(e):
+    color, glyph = PASTILLE[status_of(e)]
+    return f"{color}{glyph}{RESET}"
+
+
+def next_target(pool, stats):
+    """L'exercice le plus utile à travailler maintenant."""
+    ordered = sorted(pool, key=lambda n: (pool[n]["level"], n))
+    for n in ordered:
+        if status_of(stats["exercises"].get(n)) == "never":
+            return n, f"niveau {pool[n]['level']}, jamais fait"
+    wip = [n for n in ordered
+           if not acquired(stats["exercises"][n])]
+    if wip:
+        wip.sort(key=lambda n: (-stats["exercises"][n]["fails"],
+                                pool[n]["level"]))
+        return wip[0], f"niveau {pool[wip[0]]['level']}, en cours"
+    return None, None
 
 
 def show_stats(pool, stats, zone="60"):
-    names = sorted(pool, key=lambda n: (pool[n]["level"], n))
-    got = sum(1 for n in names
-              if n in stats["exercises"]
-              and acquired(stats["exercises"][n]))
+    ex_stats = stats["exercises"]
+    total = len(pool)
+    got = sum(1 for n in pool
+              if acquired(ex_stats.get(n, {"passes": 0, "first_try": 0})))
+    levels = sorted({pool[n]["level"] for n in pool})
+    by_level = {l: sorted(n for n in pool if pool[n]["level"] == l)
+                for l in levels}
+    mastered = sum(1 for l in levels
+                   if all(status_of(ex_stats.get(n)) == "done"
+                          for n in by_level[l]))
+
     print()
     ui.frame("MAÎTRISE · " + ZONES[zone].split(" (")[0],
-             f"{got}/{len(names)} acquis")
+             f"{got}/{total} acquis")
     print()
-    ui.bar("ACQUIS", got, len(names))
-    print(f"\n {ui.DIM}acquis = 2 réussites dont 1 du premier coup ; "
-          f"✓/✗/→ = réussites/échecs/passés{RESET}\n")
-    for n in names:
-        print(fmt_line(n, pool[n], stats["exercises"].get(n)))
+
+    # --- bandeau de synthèse -------------------------------------------
+    pct = 0 if total == 0 else round(100 * got / total)
+    ui.bar("ACQUIS", got, total, suffix=f"{got}/{total} · {pct}%")
+    print(f" {BOLD}Niveaux maîtrisés{RESET} : {mastered}/{len(levels)}"
+          f"   {GREEN}→ {mastered * 5} pts garantis à l'examen{RESET}")
+    print(f" {DIM}un exercice est « acquis » après 2 réussites "
+          f"dont 1 du premier coup{RESET}\n")
+
+    tname, treason = next_target(pool, stats)
+    if tname:
+        print(f" {CYAN}◆ Prochaine cible{RESET} : {BOLD}{tname}{RESET} "
+              f"{DIM}({treason}){RESET}")
+    else:
+        print(f" {GREEN}◆ Tout est acquis dans cette zone ! 🎉{RESET}")
+
+    weak = sorted((n for n in pool if ex_stats.get(n, {}).get("fails", 0)),
+                  key=lambda n: -ex_stats[n]["fails"])[:3]
+    if weak:
+        parts = " · ".join(f"{n} {RED}{ex_stats[n]['fails']}✗{RESET}"
+                           for n in weak)
+        print(f" {CYAN}◆ Points faibles{RESET}  : {parts}")
+
+    best_times = [ex_stats[n]["best_time"] for n in pool
+                  if ex_stats.get(n, {}).get("best_time")]
+    avg = (f"  ·  meilleur temps moyen "
+           f"{ex.fmt_duration(sum(best_times) / len(best_times))}"
+           if best_times else "")
+    print(f" {CYAN}◆ Temps total{RESET}     : "
+          f"{ex.fmt_duration(stats.get('total_seconds', 0))}{avg}\n")
+
+    # --- grille par niveau ---------------------------------------------
+    print(f" {DIM}┄ Grille  {PASTILLE['done'][0]}●{RESET}{DIM} acquis  "
+          f"{PASTILLE['wip'][0]}◐{RESET}{DIM} en cours  "
+          f"{PASTILLE['todo'][0]}○{RESET}{DIM} à retravailler  "
+          f"·  jamais fait ┄{RESET}")
+    for l in levels:
+        cells = " ".join(pastille(ex_stats.get(n)) for n in by_level[l])
+        done = sum(1 for n in by_level[l]
+                   if status_of(ex_stats.get(n)) == "done")
+        n_lvl = len(by_level[l])
+        tick = f"{GREEN}✓{RESET}" if done == n_lvl else " "
+        print(f" {BOLD}L{l:>2}{RESET}  {cells}"
+              f"{'  ' * (11 - n_lvl)}   {DIM}{done}/{n_lvl}{RESET} {tick}")
+
+    # --- détail des exercices déjà travaillés --------------------------
+    worked = [n for n in sorted(pool, key=lambda n: (pool[n]["level"], n))
+              if status_of(ex_stats.get(n)) != "never"]
+    if worked:
+        print(f"\n {DIM}┄ Exercices travaillés ┄{RESET}")
+        for n in worked:
+            e = ex_stats[n]
+            best = (f"best {ex.fmt_duration(e['best_time'])}"
+                    if e["best_time"] else "")
+            print(f" {pastille(e)} {BOLD}{n:<26}{RESET}"
+                  f"{GREEN}{e['passes']}✓{RESET} {RED}{e['fails']}✗{RESET}"
+                  f"   {DIM}{best}{RESET}")
     print()
 
 
@@ -203,6 +288,7 @@ def grade_current(stats, meta, started):
     new_record = e["best_time"] is not None and elapsed < e["best_time"]
     if e["best_time"] is None or elapsed < e["best_time"]:
         e["best_time"] = elapsed
+    stats["total_seconds"] = stats.get("total_seconds", 0.0) + elapsed
     stats["current"] = None
     save_stats(stats)
     ex.clear_trace(meta, workdir=WORKDIR)
@@ -278,6 +364,11 @@ def repl(zone="60"):
         elif cmd == "skip":
             e = entry(stats, meta["name"])
             e["skips"] += 1
+            cur = stats["current"]
+            if cur:
+                stats["total_seconds"] = (stats.get("total_seconds", 0.0)
+                                          + cur["elapsed"]
+                                          + (time.monotonic() - started))
             stats["current"] = None
             save_stats(stats)
             archive_exercise(meta["name"])
