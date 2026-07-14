@@ -14,8 +14,11 @@ case ":$PATH:" in
 	echo "→ Tape : 42exam"
 	;;
 *)
-	RC="$HOME/.zshrc"
-	[ -n "$BASH_VERSION" ] && RC="$HOME/.bashrc"
+	# le shell de connexion de l'utilisateur, pas celui qui exécute ce script
+	case "$(basename "${SHELL:-/bin/zsh}")" in
+	bash) RC="$HOME/.bashrc" ;;
+	*) RC="$HOME/.zshrc" ;;
+	esac
 	if ! grep -qs '\.local/bin' "$RC"; then
 		printf '\nexport PATH="$HOME/.local/bin:$PATH"\n' >>"$RC"
 		echo "✔ PATH mis à jour dans $RC"
