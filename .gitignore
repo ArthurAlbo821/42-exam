@@ -1,9 +1,10 @@
 # Fichiers de travail locaux — créés automatiquement au premier lancement,
 # propres à chaque étudiant : ne jamais les committer.
 rendu/
-subjects/
+entrainement/
 traces/
 .exam_state.json
+.exam_archive/
 .drill_stats.json
 .drill_archive/
 history.txt

@@ -18,7 +18,7 @@ import ui
 ROOT = os.path.dirname(os.path.abspath(__file__))
 EXERCISES_DIR = os.path.join(ROOT, "data", "exercises")
 RENDU_DIR = os.path.join(ROOT, "rendu")
-SUBJECTS_DIR = os.path.join(ROOT, "subjects")
+EXAM_ARCHIVE_DIR = os.path.join(ROOT, ".exam_archive")
 TRACES_DIR = os.path.join(ROOT, "traces")
 BUILD_DIR = os.path.join(ROOT, ".build-%d" % os.getpid())
 STATE_FILE = os.path.join(ROOT, ".exam_state.json")
@@ -131,7 +131,7 @@ def banner(text, color=CYAN):
     print(f"{color}{line}\n{text.center(66)}\n{line}{RESET}")
 
 
-def show_subject(meta, right=""):
+def show_subject(meta, right="", where="rendu"):
     subject_path = os.path.join(meta["dir"], "subject.txt")
     with open(subject_path) as f:
         subject = f.read()
@@ -140,16 +140,37 @@ def show_subject(meta, right=""):
     print()
     print(subject)
     ui.hr()
-    print(f" {YELLOW}▸{RESET} Code dans {BOLD}rendu/{meta['name']}/{RESET}"
-          f"   {ui.DIM}(sujet copié dans subjects/{meta['name']}.txt){RESET}\n")
+    print(f" {YELLOW}▸{RESET} Code dans {BOLD}{where}/{meta['name']}/{RESET}"
+          f"   {ui.DIM}(sujet + fichiers déjà créés — "
+          f"tape 'code' pour ouvrir VS Code){RESET}\n")
 
 
-def install_exercise(meta):
-    """Create rendu dir and copy the subject where the student can read it."""
-    os.makedirs(os.path.join(RENDU_DIR, meta["name"]), exist_ok=True)
-    os.makedirs(SUBJECTS_DIR, exist_ok=True)
+def install_exercise(meta, workdir=None):
+    """Prepare the exercise folder: subject.txt + empty expected files."""
+    dest = os.path.join(workdir or RENDU_DIR, meta["name"])
+    os.makedirs(dest, exist_ok=True)
     shutil.copy(os.path.join(meta["dir"], "subject.txt"),
-                os.path.join(SUBJECTS_DIR, meta["name"] + ".txt"))
+                os.path.join(dest, "subject.txt"))
+    for f in meta["files"]:
+        path = os.path.join(dest, f)
+        if not os.path.isfile(path):
+            open(path, "a").close()
+
+
+def open_in_vscode(path):
+    if shutil.which("code"):
+        subprocess.Popen(["code", path],
+                         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        print(f"{ui.DIM}Ouvert dans VS Code : "
+              f"{os.path.relpath(path, ROOT)}{RESET}")
+        return
+    res = subprocess.run(["open", "-a", "Visual Studio Code", path],
+                         capture_output=True)
+    if res.returncode == 0:
+        print(f"{ui.DIM}Ouvert dans VS Code.{RESET}")
+    else:
+        print(f"{YELLOW}VS Code introuvable — ouvre {path} toi-même "
+              f"(installe la commande 'code' via la palette VS Code).{RESET}")
 
 
 def assign_exercise(state, levels, pool):
@@ -246,15 +267,15 @@ def diff_block(label, expected, got):
             f"Your output:\n{visible(got)}\n")
 
 
-def grade(meta):
-    """Run the moulinette on rendu/<name>. Raises GradeFailure on any KO."""
-    rendu = os.path.join(RENDU_DIR, meta["name"])
+def grade(meta, workdir=None):
+    """Run the moulinette on <workdir>/<name>. Raises GradeFailure on KO."""
+    rendu = os.path.join(workdir or RENDU_DIR, meta["name"])
     missing = [f for f in meta["files"]
                if not os.path.isfile(os.path.join(rendu, f))]
     if missing:
         raise GradeFailure(
             "Missing file(s): " + ", ".join(missing),
-            f"Expected files in rendu/{meta['name']}/: "
+            f"Expected files in {os.path.relpath(rendu, ROOT)}/: "
             + ", ".join(meta["files"]))
 
     shutil.rmtree(BUILD_DIR, ignore_errors=True)
@@ -402,6 +423,7 @@ HELP = f"""
 Commands:
   {BOLD}grademe{RESET}   run the tests on your current exercise
   {BOLD}subject{RESET}   print the current subject again
+  {BOLD}code{RESET}      open the current exercise folder in VS Code
   {BOLD}status{RESET}    score, level, attempts, time remaining
   {BOLD}finish{RESET}    end the exam now and see your final score
   {BOLD}help{RESET}      this message
@@ -440,6 +462,8 @@ def repl(state, pool, levels):
                              fmt_duration(clock.remaining()) + " restant")
         elif cmd == "subject":
             show_subject(meta, fmt_duration(clock.remaining()) + " restant")
+        elif cmd == "code":
+            open_in_vscode(os.path.join(RENDU_DIR, meta["name"]))
         elif cmd == "status":
             cmd_status(state, clock, meta)
         elif cmd == "finish":
@@ -475,7 +499,12 @@ def run_new(duration=None):
     pool, levels = prepare_pool()
     state = new_state(duration)
     save_state(state)
-    shutil.rmtree(SUBJECTS_DIR, ignore_errors=True)
+    if os.path.isdir(RENDU_DIR) and os.listdir(RENDU_DIR):
+        os.makedirs(EXAM_ARCHIVE_DIR, exist_ok=True)
+        stamp = time.strftime("%Y-%m-%d_%H%M%S")
+        shutil.move(RENDU_DIR, os.path.join(EXAM_ARCHIVE_DIR, stamp))
+        print(f"{ui.DIM}Ancien rendu archivé dans "
+              f".exam_archive/{stamp}/{RESET}")
     print(f"\n{BOLD}New exam started.{RESET} "
           f"Duration: {fmt_duration(state['duration'])}. "
           f"{TOTAL_LEVELS} levels x {POINTS_PER_LEVEL} pts = 100 pts.")

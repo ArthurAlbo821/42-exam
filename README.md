@@ -16,8 +16,9 @@ Sans installation, `./42exam` depuis le dossier du repo marche aussi.
 Prérequis : `python3` et `cc` (déjà présents sur les Macs de 42).
 
 Au premier lancement, le programme crée automatiquement tes dossiers de
-travail locaux (`rendu/`, `subjects/`, `traces/`, sessions, stats) — ils
-restent sur ta machine et ne sont jamais commités.
+travail locaux (`rendu/` pour l'examen, `entrainement/` pour le drill,
+`traces/`, sessions, stats) — ils restent sur ta machine et ne sont
+jamais commités.
 
 ## Le menu
 
@@ -62,9 +63,11 @@ deviennent automatiques.
 
 ## Déroulement
 
-1. Le sujet du niveau s'affiche dans le terminal (copie dans `subjects/`).
-2. Code ta solution dans `rendu/<nom_exercice>/` avec les fichiers demandés
-   (ouvre le dossier dans VS Code : `code .`).
+1. Le sujet du niveau s'affiche dans le terminal, et le dossier de
+   l'exercice est préparé : `subject.txt` + fichiers `.c` vides déjà créés.
+2. Code ta solution dans `rendu/<nom_exercice>/` (examen) ou
+   `entrainement/<nom_exercice>/` (drill) — tape `code` pour ouvrir le
+   dossier dans VS Code.
 3. Tape `grademe` dans l'examshell :
    - compilation `cc -Wall -Wextra -Werror` (le moindre warning = échec),
    - vérification des fonctions interdites (via `nm`),
@@ -78,9 +81,14 @@ deviennent automatiques.
 |-----------|-------|
 | `grademe` | corrige l'exercice en cours |
 | `subject` | réaffiche le sujet |
+| `code`    | ouvre le dossier de l'exercice dans VS Code |
 | `status`  | score, niveau, essais, temps restant |
 | `finish`  | termine l'examen et affiche le score final |
 | `exit`    | sauvegarde et quitte (timer en pause) |
+
+Un nouvel examen archive l'ancien `rendu/` dans `.exam_archive/` et
+repart d'un dossier propre. En drill, `entrainement/` ne contient que
+l'exercice en cours (le reste part dans `.drill_archive/`).
 
 ## Barème
 
@@ -102,11 +110,13 @@ Pour vérifier l'intégrité du pool : `python3 validate.py`.
 ## Structure
 
 ```
-examshell.py      le simulateur
+42exam            le menu (aussi installable en commande globale)
+examshell.py      le simulateur d'examen
+drill.py          le mode entraînement
 validate.py       auto-test du pool (les solutions de référence doivent passer)
 data/exercises/   un dossier par exercice (sujet, solution de référence, tests)
-rendu/            TES solutions (créé au lancement)
-subjects/         copies des sujets de ton examen en cours
+rendu/            TES solutions d'examen (créé au lancement)
+entrainement/     l'exercice de drill en cours (créé au lancement)
 traces/           traces d'échec de grademe
 history.txt       scores des examens terminés
 ```

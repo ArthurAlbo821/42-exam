@@ -31,6 +31,7 @@ ZONES = {
 }
 STATS_FILE = os.path.join(ex.ROOT, ".drill_stats.json")
 ARCHIVE_DIR = os.path.join(ex.ROOT, ".drill_archive")
+WORKDIR = os.path.join(ex.ROOT, "entrainement")  # séparé du rendu/ d'examen
 
 BOLD, GREEN, RED, YELLOW, CYAN, RESET = (
     ex.BOLD, ex.GREEN, ex.RED, ex.YELLOW, ex.CYAN, ex.RESET)
@@ -91,9 +92,11 @@ def pick_exercise(pool, stats):
     return random.choice(names), "tout est acquis — révision libre 💪"
 
 
-def archive_rendu(name):
-    src = os.path.join(ex.RENDU_DIR, name)
-    if not os.path.isdir(src) or not os.listdir(src):
+def archive_exercise(name):
+    """Move entrainement/<name> to the archive (drill keeps only the
+    current exercise visible)."""
+    src = os.path.join(WORKDIR, name)
+    if not os.path.isdir(src):
         return
     os.makedirs(ARCHIVE_DIR, exist_ok=True)
     n = 1
@@ -105,8 +108,8 @@ def archive_rendu(name):
 def assign(stats, pool, name, reason, fresh=True):
     meta = pool[name]
     if fresh:
-        archive_rendu(name)
-    ex.install_exercise(meta)
+        archive_exercise(name)
+    ex.install_exercise(meta, workdir=WORKDIR)
     e = entry(stats, name)
     stats["picks"] += 1
     e["last_pick"] = stats["picks"]
@@ -114,7 +117,7 @@ def assign(stats, pool, name, reason, fresh=True):
         stats["current"] = {"name": name, "elapsed": 0.0, "attempts": 0}
     save_stats(stats)
     best = ex.fmt_duration(e["best_time"]) if e["best_time"] else "—"
-    ex.show_subject(meta, f"record {best}")
+    ex.show_subject(meta, f"record {best}", where="entrainement")
     print(f" {YELLOW}◆{RESET} {reason}   "
           f"{ui.DIM}historique : {e['passes']}✓ {e['fails']}✗ "
           f"{e['skips']}→{RESET}\n")
@@ -160,6 +163,7 @@ Commandes du mode entraînement :
   {BOLD}grademe{RESET}   corrige l'exercice en cours (chronométré)
   {BOLD}skip{RESET}      passe à un autre exercice (compte comme une faiblesse)
   {BOLD}subject{RESET}   réaffiche le sujet
+  {BOLD}code{RESET}      ouvre le dossier de l'exercice dans VS Code
   {BOLD}stats{RESET}     tableau de maîtrise des {BOLD}~45{RESET} exercices de la zone 60 pts
   {BOLD}status{RESET}    exercice en cours, chrono, historique
   {BOLD}help{RESET}      ce message
@@ -177,7 +181,7 @@ def grade_current(stats, meta, started):
     try:
         with ui.Spinner(f"compilation & tests de {name} "
                         f"(chrono {ex.fmt_duration(elapsed)})"):
-            ex.grade(meta)
+            ex.grade(meta, workdir=WORKDIR)
     except ex.GradeFailure as failure:
         trace = ex.write_trace(meta, failure)
         e["fails"] += 1
@@ -198,6 +202,7 @@ def grade_current(stats, meta, started):
         e["best_time"] = elapsed
     stats["current"] = None
     save_stats(stats)
+    archive_exercise(name)  # l'espace drill ne garde que l'exo en cours
     tag = " · du premier coup !" if first_try else ""
     ui.ok(f"{name} réussi{tag}", ex.fmt_duration(elapsed))
     if new_record:
@@ -221,7 +226,7 @@ def repl(zone="60"):
     if stats["current"] and stats["current"]["name"] in pool:
         name = stats["current"]["name"]
         print(f"Reprise de l'exercice en cours : {BOLD}{name}{RESET} "
-              f"(ton code est toujours dans rendu/{name}/)")
+              f"(ton code est toujours dans entrainement/{name}/)")
         meta = assign(stats, pool, name, "reprise", fresh=False)
     else:
         name, reason = pick_exercise(pool, stats)
@@ -245,13 +250,18 @@ def repl(zone="60"):
             e["skips"] += 1
             stats["current"] = None
             save_stats(stats)
+            archive_exercise(meta["name"])
             print(f"{YELLOW}{meta['name']} passé — "
                   f"il reviendra en priorité.{RESET}")
             name, reason = pick_exercise(pool, stats)
             meta = assign(stats, pool, name, reason)
             started = time.monotonic()
         elif cmd == "subject":
-            ex.show_subject(meta)
+            e = entry(stats, meta["name"])
+            best = ex.fmt_duration(e["best_time"]) if e["best_time"] else "—"
+            ex.show_subject(meta, f"record {best}", where="entrainement")
+        elif cmd == "code":
+            ex.open_in_vscode(os.path.join(WORKDIR, meta["name"]))
         elif cmd == "stats":
             show_stats(pool, stats, zone)
         elif cmd == "status":
