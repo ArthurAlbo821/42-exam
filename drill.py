@@ -166,10 +166,11 @@ Commandes du mode entraînement :
   {BOLD}skip{RESET}      passe à un autre exercice (compte comme une faiblesse)
   {BOLD}subject{RESET}   réaffiche le sujet
   {BOLD}code{RESET}      ouvre le dossier de l'exercice dans VS Code
-  {BOLD}stats{RESET}     tableau de maîtrise des {BOLD}~45{RESET} exercices de la zone 60 pts
+  {BOLD}stats{RESET}     tableau de maîtrise des exercices de la zone
   {BOLD}status{RESET}    exercice en cours, chrono, historique
+  {BOLD}finish{RESET}    termine la session avec un récap (chrono en pause)
   {BOLD}help{RESET}      ce message
-  {BOLD}exit{RESET}      sauvegarde et quitte (le chrono de l'exo est mis en pause)
+  {BOLD}exit{RESET}      quitte sans récap (le chrono de l'exo est mis en pause)
 """
 
 
@@ -216,13 +217,38 @@ def grade_current(stats, meta, started):
     return True
 
 
+def acquired_count(pool, stats):
+    return sum(1 for n in pool if n in stats["exercises"]
+               and acquired(stats["exercises"][n]))
+
+
+def finish_session(pool, stats, zone, session_passed, start_acquired,
+                   session_start):
+    """End the drill session with a recap (finish command)."""
+    got = acquired_count(pool, stats)
+    print()
+    ui.frame("SESSION TERMINÉE",
+             ex.fmt_duration(time.monotonic() - session_start))
+    print()
+    ui.bar("ACQUIS", got, len(pool))
+    print(f"\n {BOLD}Réussis cette session :{RESET} {len(session_passed)}"
+          + (f"  {ui.DIM}({', '.join(session_passed)}){RESET}"
+             if session_passed else ""))
+    gained = got - start_acquired
+    if gained > 0:
+        ui.celebrate(f"+{gained} EXERCICE(S) ACQUIS AUJOURD'HUI")
+    print(f"\n {ui.DIM}Progression sauvegardée — "
+          f"à la prochaine session !{RESET}\n")
+
+
 def repl(zone="60"):
     pool = drill_pool(ex.load_exercises(), zone)
     stats = load_stats()
     ui.show_banner("MODE ENTRAÎNEMENT · " + ZONES[zone])
-    got = sum(1 for n in pool if n in stats["exercises"]
-              and acquired(stats["exercises"][n]))
-    ui.bar("ACQUIS", got, len(pool))
+    start_acquired = acquired_count(pool, stats)
+    session_passed = []
+    session_start = time.monotonic()
+    ui.bar("ACQUIS", start_acquired, len(pool))
     print(f"\n {ui.DIM}Objectif : tout en ✓. "
           f"Tape 'help' pour les commandes.{RESET}\n")
 
@@ -245,6 +271,7 @@ def repl(zone="60"):
 
         if cmd == "grademe":
             if grade_current(stats, meta, started):
+                session_passed.append(meta["name"])
                 name, reason = pick_exercise(pool, stats)
                 meta = assign(stats, pool, name, reason)
                 started = time.monotonic()
@@ -280,11 +307,15 @@ def repl(zone="60"):
                   f"{e['skips']}→   essais sur cet exo : {cur['attempts']}\n")
         elif cmd == "help":
             print(HELP)
-        elif cmd in ("exit", "quit"):
+        elif cmd in ("finish", "exit", "quit"):
             if stats["current"]:
                 stats["current"]["elapsed"] += time.monotonic() - started
             save_stats(stats)
-            print("Progression sauvegardée. À la prochaine session !")
+            if cmd == "finish":
+                finish_session(pool, stats, zone, session_passed,
+                               start_acquired, session_start)
+            else:
+                print("Progression sauvegardée. À la prochaine session !")
             return
         elif cmd:
             print(f"Commande inconnue '{cmd}'. Tape 'help'.")
