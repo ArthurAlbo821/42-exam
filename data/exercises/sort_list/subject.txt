@@ -1,0 +1,41 @@
+Assignment name  : sort_list
+Expected files   : sort_list.c, ft_list.h
+Allowed functions:
+--------------------------------------------------------------------------------
+
+Write a function that sorts the content of a linked list following an order
+given by a function passed as a parameter.
+
+The comparison function cmp returns a non-zero value (true) when the two
+values it receives are in the right order, and zero (false) otherwise. Once
+sorted, the list must be such that cmp(node->data, node->next->data) is true
+for every pair of consecutive elements. The function returns a pointer to the
+first element of the sorted list.
+
+Duplicate values must be handled correctly.
+
+Your function must be declared as follows:
+
+t_list	*sort_list(t_list *lst, int (*cmp)(int, int));
+
+You must use the following structure, and turn it in as a file called
+ft_list.h:
+
+#ifndef FT_LIST_H
+# define FT_LIST_H
+
+typedef struct s_list
+{
+	int				data;
+	struct s_list	*next;
+}	t_list;
+
+#endif
+
+For example, with the following comparison function, the list is sorted in
+ascending order:
+
+int	ascending(int a, int b)
+{
+	return (a <= b);
+}

@@ -1,0 +1,7 @@
+{
+  "name": "ft_swap",
+  "level": 3,
+  "type": "function",
+  "files": ["ft_swap.c"],
+  "allowed_functions": []
+}

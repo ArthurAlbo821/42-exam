@@ -1,0 +1,24 @@
+Assignment name  : aff_a
+Expected files   : aff_a.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that takes a string, and displays the character 'a' followed
+by a newline if the string contains at least one 'a'. If the string does not
+contain any 'a' character, the program only displays a newline.
+
+If the number of parameters is not 1, the program displays 'a' followed by a
+newline.
+
+Examples:
+
+$> ./aff_a "abc" | cat -e
+a$
+$> ./aff_a "dubO a POIL" | cat -e
+a$
+$> ./aff_a "zz sent le poney" | cat -e
+$
+$> ./aff_a | cat -e
+a$
+$> ./aff_a "one" "two" | cat -e
+a$

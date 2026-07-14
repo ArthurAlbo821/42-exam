@@ -1,0 +1,30 @@
+Assignment name  : infin_add
+Expected files   : infin_add.c
+Allowed functions: write, malloc, free
+--------------------------------------------------------------------------------
+
+Write a program that takes two strings representing two non-negative integers
+and displays their sum, followed by a newline.
+
+The two numbers are made of digits only ('0' to '9'). They have no sign and
+may be arbitrarily large (they can be far bigger than any C integer type).
+They may contain leading zeros.
+
+The result must be displayed without any leading zeros. If the result is zero,
+it must be displayed as a single "0".
+
+If the number of parameters is not 2, simply display a newline.
+
+Examples:
+
+$> ./infin_add "123" "877" | cat -e
+1000$
+$> ./infin_add "0" "0" | cat -e
+0$
+$> ./infin_add "999999999999999999999999" "1" | cat -e
+1000000000000000000000000$
+$> ./infin_add "0005" "5" | cat -e
+10$
+$> ./infin_add "42" | cat -e
+$
+$>

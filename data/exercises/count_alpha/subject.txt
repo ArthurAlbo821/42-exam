@@ -1,0 +1,28 @@
+Assignment name  : count_alpha
+Expected files   : count_alpha.c
+Allowed functions: write, printf
+--------------------------------------------------------------------------------
+
+Write a program that takes a string and displays the number of 'a', 'b', ...,
+'z' characters it contains, in the form of a list of the letters present in
+the string, sorted by their order of appearance, and each preceded by its
+number of occurrences.
+
+Upper case letters are counted as their lower case equivalents.
+Any other character is ignored.
+
+The display ends with a newline.
+
+If the number of arguments is not 1, or if the string contains no
+alphabetical character, the program displays a newline.
+
+Examples:
+
+$> ./count_alpha "abbcc" | cat -e
+1a, 2b, 2c$
+$> ./count_alpha "My Hyze 47y 7." | cat -e
+1m, 3y, 1h, 1z, 1e$
+$> ./count_alpha "" | cat -e
+$
+$> ./count_alpha | cat -e
+$

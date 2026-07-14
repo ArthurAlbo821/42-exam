@@ -1,0 +1,29 @@
+Assignment name  : repeat_alpha
+Expected files   : repeat_alpha.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program called repeat_alpha that takes a string and displays it,
+repeating each alphabetical character as many times as its alphabetical index,
+followed by a newline.
+
+'a' becomes 'a', 'b' becomes 'bb', 'e' becomes 'eeeee', 'z' is repeated 26
+times, etc...
+
+Case remains unchanged and the same rule applies to uppercase letters.
+
+Characters that are not alphabetical characters are displayed only once.
+
+If the number of arguments is not 1, the program displays a newline.
+
+Examples:
+
+$> ./repeat_alpha "abc" | cat -e
+abbccc$
+$> ./repeat_alpha "Alan!" | cat -e
+Allllllllllllannnnnnnnnnnnnn!$
+$> ./repeat_alpha "abacadaba 42!" | cat -e
+abbacccaddddabba 42!$
+$> ./repeat_alpha | cat -e
+$
+$>

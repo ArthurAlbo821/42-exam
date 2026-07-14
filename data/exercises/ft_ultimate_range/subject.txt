@@ -1,0 +1,24 @@
+Assignment name  : ft_ultimate_range
+Expected files   : ft_ultimate_range.c
+Allowed functions: malloc
+--------------------------------------------------------------------------------
+
+Write the following function:
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+It must allocate (with malloc()) an array of ints, fill it with consecutive
+values that begin at min and end at max - 1 (max is excluded), assign the
+address of this array to the int pointer pointed to by range, and return the
+size of the array.
+
+If the value of min is greater than or equal to max's value, the size of the
+array will be 0, range will point on NULL, and the function returns 0.
+
+Examples:
+
+ft_ultimate_range(&range, 0, 5) stores [0, 1, 2, 3, 4] in *range
+                                and returns 5.
+ft_ultimate_range(&range, -3, 2) stores [-3, -2, -1, 0, 1] in *range
+                                 and returns 5.
+ft_ultimate_range(&range, 5, 2) stores NULL in *range and returns 0.

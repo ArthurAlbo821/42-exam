@@ -1,0 +1,7 @@
+{
+  "name": "cycle_detector",
+  "level": 19,
+  "type": "function",
+  "files": ["cycle_detector.c", "list.h"],
+  "allowed_functions": ["malloc", "free"]
+}

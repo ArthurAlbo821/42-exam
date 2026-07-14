@@ -1,0 +1,19 @@
+{
+  "name": "search_and_replace",
+  "level": 9,
+  "type": "program",
+  "files": ["search_and_replace.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []},
+    {"args": ["Papache est un sabre", "a", "o"]},
+    {"args": ["zaz", "r", "u"]},
+    {"args": ["query", "e", "e"]},
+    {"args": ["Papa", "ab", "o"]},
+    {"args": ["Papa", "", "o"]},
+    {"args": ["Papa", "a", ""]},
+    {"args": ["Papa", "a"]},
+    {"args": ["jacob", "a", "b", "c"]},
+    {"args": ["", "a", "b"]}
+  ]
+}

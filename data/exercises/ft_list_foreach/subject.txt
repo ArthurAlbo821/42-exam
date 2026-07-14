@@ -1,0 +1,28 @@
+Assignment name  : ft_list_foreach
+Expected files   : ft_list_foreach.c, ft_list.h
+Allowed functions:
+--------------------------------------------------------------------------------
+
+Write a function that applies a function to the data of every element of a
+linked list.
+
+The function pointed to by f is applied to the "data" member of each element,
+in order, from the beginning of the list to its end.
+
+Your function must be declared as follows:
+
+void	ft_list_foreach(t_list *begin_list, void (*f)(void *));
+
+You must use the following structure, and turn it in as a file called
+ft_list.h:
+
+#ifndef FT_LIST_H
+# define FT_LIST_H
+
+typedef struct s_list
+{
+	struct s_list	*next;
+	void			*data;
+}	t_list;
+
+#endif

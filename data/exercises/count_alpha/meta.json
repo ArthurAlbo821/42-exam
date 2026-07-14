@@ -1,0 +1,19 @@
+{
+  "name": "count_alpha",
+  "level": 9,
+  "type": "program",
+  "files": ["count_alpha.c"],
+  "allowed_functions": ["write", "printf"],
+  "tests": [
+    {"args": ["abbcc"]},
+    {"args": ["My Hyze 47y 7."]},
+    {"args": [""]},
+    {"args": []},
+    {"args": ["abc", "def"]},
+    {"args": ["zzzzz"]},
+    {"args": ["Hello World"]},
+    {"args": ["9 8 7 ..."]},
+    {"args": ["aAbBcC"]},
+    {"args": ["The quick brown fox jumps over the lazy dog"]}
+  ]
+}

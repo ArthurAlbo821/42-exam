@@ -1,0 +1,25 @@
+Assignment name  : ft_fibonacci
+Expected files   : ft_fibonacci.c
+Allowed functions:
+--------------------------------------------------------------------------------
+
+Write a function ft_fibonacci that returns the index-th element of the
+fibonacci sequence, the first element being at index 0.
+
+The fibonacci sequence is defined as follows: the first two elements are 0
+and 1, and each other element is the sum of the two previous ones:
+
+fib(0) = 0, fib(1) = 1, fib(n) = fib(n - 1) + fib(n - 2)
+
+If index is negative, the function returns -1.
+
+Your function must be declared as follows:
+
+int	ft_fibonacci(int index);
+
+Examples:
+
+- ft_fibonacci(0) returns 0
+- ft_fibonacci(1) returns 1
+- ft_fibonacci(10) returns 55
+- ft_fibonacci(-3) returns -1

@@ -1,0 +1,17 @@
+{
+  "name": "aff_z",
+  "level": 2,
+  "type": "program",
+  "files": ["aff_z.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": ["zaz sent le poney"]},
+    {"args": ["dubO a POIL"]},
+    {"args": [""]},
+    {"args": []},
+    {"args": ["abc", "def"]},
+    {"args": ["the lazy dog"]},
+    {"args": ["ZZZ uppercase only"]},
+    {"args": ["z"]}
+  ]
+}

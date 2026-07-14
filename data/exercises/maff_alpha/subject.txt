@@ -1,0 +1,13 @@
+Assignment name  : maff_alpha
+Expected files   : maff_alpha.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that displays the alphabet, with every second letter being
+capitalized, in ascending order, starting with a lowercase 'a', followed by
+a newline.
+
+Example:
+
+$> ./maff_alpha | cat -e
+aBcDeFgHiJkLmNoPqRsTuVwXyZ$

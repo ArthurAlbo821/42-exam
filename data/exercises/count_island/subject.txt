@@ -1,0 +1,40 @@
+Assignment name  : count_island
+Expected files   : count_island.c
+Allowed functions: read, write, malloc, free
+--------------------------------------------------------------------------------
+
+Write a program that reads a rectangular map on the standard input and
+displays the same map with every piece of land replaced by the number of its
+island.
+
+The map is made of lines of the same length, each terminated by a newline.
+The character '.' represents water and the character '#' represents land.
+
+Two pieces of land belong to the same island when they are connected
+horizontally or vertically (never in diagonal). Each island is given a number
+starting from 0, in the order in which its first cell is met while scanning
+the map from left to right, then from top to bottom.
+
+Your program must display the map again, replacing every '#' by the single
+digit that is the number of its island. Water characters and newlines are
+left unchanged. You can assume there are fewer than 10 islands, so a single
+digit is always enough.
+
+The program takes no argument. If the number of parameters is not 0, simply
+display a newline. If the input is empty, display nothing.
+
+Example:
+
+$> echo "...
+.#.
+..." | ./count_island
+...
+.0.
+...
+
+$> cat map | ./count_island
+#..#            0..1
+#..#     -->    0..1
+....            ....
+..#.            ..2.
+$>

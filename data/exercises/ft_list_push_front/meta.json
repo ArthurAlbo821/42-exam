@@ -1,0 +1,7 @@
+{
+  "name": "ft_list_push_front",
+  "level": 19,
+  "type": "function",
+  "files": ["ft_list_push_front.c", "ft_list.h"],
+  "allowed_functions": ["malloc"]
+}

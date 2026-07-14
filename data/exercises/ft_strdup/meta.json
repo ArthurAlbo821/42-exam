@@ -1,0 +1,7 @@
+{
+  "name": "ft_strdup",
+  "level": 8,
+  "type": "function",
+  "files": ["ft_strdup.c"],
+  "allowed_functions": ["malloc"]
+}

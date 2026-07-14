@@ -1,0 +1,10 @@
+{
+  "name": "ft_print_alphabet",
+  "level": 1,
+  "type": "program",
+  "files": ["ft_print_alphabet.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []}
+  ]
+}

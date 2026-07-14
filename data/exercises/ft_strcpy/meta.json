@@ -1,0 +1,7 @@
+{
+  "name": "ft_strcpy",
+  "level": 4,
+  "type": "function",
+  "files": ["ft_strcpy.c"],
+  "allowed_functions": []
+}

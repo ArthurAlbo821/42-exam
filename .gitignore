@@ -1,0 +1,20 @@
+# Fichiers de travail locaux — créés automatiquement au premier lancement,
+# propres à chaque étudiant : ne jamais les committer.
+rendu/
+subjects/
+traces/
+.exam_state.json
+.drill_stats.json
+.drill_archive/
+history.txt
+
+# Artefacts de build / système
+.build*/
+.validate_rendu*/
+__pycache__/
+*.pyc
+a.out
+.DS_Store
+
+# Config locale Claude
+.claude/

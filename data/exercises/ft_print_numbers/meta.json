@@ -1,0 +1,10 @@
+{
+  "name": "ft_print_numbers",
+  "level": 1,
+  "type": "program",
+  "files": ["ft_print_numbers.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []}
+  ]
+}

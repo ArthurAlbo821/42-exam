@@ -1,0 +1,20 @@
+{
+  "name": "count_island",
+  "level": 20,
+  "type": "program",
+  "files": ["count_island.c"],
+  "allowed_functions": ["read", "write", "malloc", "free"],
+  "tests": [
+    {"args": [], "stdin": "...\n.#.\n...\n"},
+    {"args": [], "stdin": "#..#\n#..#\n....\n..#.\n"},
+    {"args": [], "stdin": "#.\n.#\n"},
+    {"args": [], "stdin": "#####\n....#\n#####\n#....\n#####\n"},
+    {"args": [], "stdin": "....\n....\n....\n"},
+    {"args": [], "stdin": "####\n####\n"},
+    {"args": [], "stdin": "#.#.#.#\n"},
+    {"args": [], "stdin": "#\n.\n#\n.\n#\n"},
+    {"args": [], "stdin": "#\n"},
+    {"args": [], "stdin": ""},
+    {"args": ["x"], "stdin": "...\n.#.\n...\n"}
+  ]
+}

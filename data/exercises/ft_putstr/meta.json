@@ -1,0 +1,7 @@
+{
+  "name": "ft_putstr",
+  "level": 3,
+  "type": "function",
+  "files": ["ft_putstr.c"],
+  "allowed_functions": ["write"]
+}

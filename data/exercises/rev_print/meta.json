@@ -1,0 +1,16 @@
+{
+  "name": "rev_print",
+  "level": 6,
+  "type": "program",
+  "files": ["rev_print.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": ["zaz"]},
+    {"args": ["dub0 a POIL"]},
+    {"args": [""]},
+    {"args": ["a"]},
+    {"args": []},
+    {"args": ["hello", "world"]},
+    {"args": ["  spaces \t and tabs  "]}
+  ]
+}

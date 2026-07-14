@@ -1,0 +1,22 @@
+Assignment name  : ulstr
+Expected files   : ulstr.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that takes a string and displays it after switching the case
+of each of its letters: lowercase letters become uppercase and uppercase
+letters become lowercase. Other characters are not changed.
+
+The result is followed by a newline.
+
+If the number of arguments is not 1, the program displays a newline.
+
+Examples:
+
+$> ./ulstr "L'eSPrit nE peUt plUs pRogResSer s'Il staGne" | cat -e
+l'Esprit Ne PEuT PLuS PrOGrESsER S'iL STAgNE$
+$> ./ulstr "abc" | cat -e
+ABC$
+$> ./ulstr | cat -e
+$
+$>

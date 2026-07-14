@@ -1,0 +1,7 @@
+{
+  "name": "ft_strlen",
+  "level": 3,
+  "type": "function",
+  "files": ["ft_strlen.c"],
+  "allowed_functions": []
+}

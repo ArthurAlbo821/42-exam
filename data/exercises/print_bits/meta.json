@@ -1,0 +1,7 @@
+{
+  "name": "print_bits",
+  "level": 10,
+  "type": "function",
+  "files": ["print_bits.c"],
+  "allowed_functions": ["write"]
+}

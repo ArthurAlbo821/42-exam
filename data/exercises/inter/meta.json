@@ -1,0 +1,18 @@
+{
+  "name": "inter",
+  "level": 15,
+  "type": "program",
+  "files": ["inter.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []},
+    {"args": ["padinton", "paqefwtdjetyiytjneytjoeyjnejeyj"]},
+    {"args": ["ddf6vewg64f", "gtwthgdwthdwfteewhrtag6h4ffdhsd"]},
+    {"args": ["abc", "defg"]},
+    {"args": ["hello", "hello"]},
+    {"args": ["", "abcdef"]},
+    {"args": ["abcdef", ""]},
+    {"args": ["onlyone"]},
+    {"args": ["a", "b", "c"]}
+  ]
+}

@@ -1,0 +1,31 @@
+Assignment name  : ft_atoi
+Expected files   : ft_atoi.c
+Allowed functions:
+--------------------------------------------------------------------------------
+
+Write a function that converts the string argument str to an integer (type
+int) and returns it. It works much like the standard atoi(const char *str)
+function.
+
+The string is processed as follows:
+
+- The function skips any number of leading whitespace characters
+  (' ', '\t', '\n', '\v', '\f', '\r').
+- It then reads an optional single '+' or '-' sign.
+- It then converts the consecutive digits that follow, and stops at the first
+  character that is not a digit (or at the end of the string).
+
+The string can contain additional characters after the number; they are
+ignored and have no effect. If, after the optional whitespace and sign, the
+string does not start with a digit, the function returns 0.
+
+Your function must be declared as follows:
+
+int	ft_atoi(const char *str);
+
+Examples:
+
+- ft_atoi("42") returns 42
+- ft_atoi("   -42") returns -42
+- ft_atoi("+1234ab567") returns 1234
+- ft_atoi("  +  5") returns 0

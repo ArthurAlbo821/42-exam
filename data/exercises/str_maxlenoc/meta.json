@@ -1,0 +1,17 @@
+{
+  "name": "str_maxlenoc",
+  "level": 20,
+  "type": "program",
+  "files": ["str_maxlenoc.c"],
+  "allowed_functions": ["write", "malloc", "free"],
+  "tests": [
+    {"args": ["ab", "bac", "abacabccabcb"]},
+    {"args": ["bonjour", "salut", "bonjour", "bonjour"]},
+    {"args": ["xoxAoxo", "xoxAox", " oxAox", "oxo", " A", "ooxAoxx", "oxooxo", "Axo"]},
+    {"args": ["bosdsdfnjodur", "atehhellosd", "afkuonjosurafg", "headfgllosf", "fghellosag", "afdfbosnjourafg"]},
+    {"args": ["hello"]},
+    {"args": ["same", "same"]},
+    {"args": []},
+    {"args": ["abcdef", "zzzzzz"]}
+  ]
+}

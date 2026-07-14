@@ -1,0 +1,7 @@
+{
+  "name": "ft_itoa",
+  "level": 17,
+  "type": "function",
+  "files": ["ft_itoa.c"],
+  "allowed_functions": ["malloc"]
+}

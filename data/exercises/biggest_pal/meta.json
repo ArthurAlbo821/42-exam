@@ -1,0 +1,19 @@
+{
+  "name": "biggest_pal",
+  "level": 19,
+  "type": "program",
+  "files": ["biggest_pal.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": ["abcba"]},
+    {"args": ["aaaaaaaaaabbcbbaaaa"]},
+    {"args": ["aeibaabaammaabaalek"]},
+    {"args": ["a"]},
+    {"args": ["racecar"]},
+    {"args": ["abaxcdc"]},
+    {"args": [""]},
+    {"args": []},
+    {"args": ["abc", "def"]},
+    {"args": ["abba"]}
+  ]
+}

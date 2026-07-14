@@ -1,0 +1,11 @@
+Assignment name  : only_z
+Expected files   : only_z.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that displays the character 'z', followed by a newline.
+
+Example:
+
+$> ./only_z | cat -e
+z$

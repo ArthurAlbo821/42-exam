@@ -1,0 +1,7 @@
+{
+  "name": "ft_recursive_factorial",
+  "level": 5,
+  "type": "function",
+  "files": ["ft_recursive_factorial.c"],
+  "allowed_functions": []
+}

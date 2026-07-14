@@ -1,0 +1,7 @@
+{
+  "name": "ft_fibonacci",
+  "level": 10,
+  "type": "function",
+  "files": ["ft_fibonacci.c"],
+  "allowed_functions": []
+}

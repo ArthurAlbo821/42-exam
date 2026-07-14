@@ -1,0 +1,26 @@
+Assignment name  : rev_wstr
+Expected files   : rev_wstr.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that takes a string as a parameter, and prints its words in
+reverse order.
+
+A word is a section of string delimited by spaces/tabs or by the start/end of
+the string.
+
+Words will be separated by a single space in the output, with no space or tab
+at the beginning or the end, followed by a newline.
+
+If the number of parameters is not 1, the program displays a newline.
+
+Examples:
+
+$> ./rev_wstr "You hate people! But I love gatherings. Isn't it ironic?" | cat -e
+ironic? it Isn't gatherings. love I But people! hate You$
+$> ./rev_wstr "abcdefghijklm" | cat -e
+abcdefghijklm$
+$> ./rev_wstr "Wingardium Leviosa" | cat -e
+Leviosa Wingardium$
+$> ./rev_wstr | cat -e
+$

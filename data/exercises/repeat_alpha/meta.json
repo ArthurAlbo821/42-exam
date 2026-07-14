@@ -1,0 +1,17 @@
+{
+  "name": "repeat_alpha",
+  "level": 7,
+  "type": "program",
+  "files": ["repeat_alpha.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []},
+    {"args": ["abc"]},
+    {"args": ["Alan!"]},
+    {"args": ["abacadaba 42!"]},
+    {"args": [""]},
+    {"args": ["Z"]},
+    {"args": ["a", "b"]},
+    {"args": ["  zZ  "]}
+  ]
+}

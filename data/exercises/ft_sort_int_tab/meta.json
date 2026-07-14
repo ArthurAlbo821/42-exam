@@ -1,0 +1,7 @@
+{
+  "name": "ft_sort_int_tab",
+  "level": 12,
+  "type": "function",
+  "files": ["ft_sort_int_tab.c"],
+  "allowed_functions": []
+}

@@ -1,0 +1,17 @@
+{
+  "name": "alpha_mirror",
+  "level": 9,
+  "type": "program",
+  "files": ["alpha_mirror.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []},
+    {"args": ["abc"]},
+    {"args": ["My horse is Amazing."]},
+    {"args": [""]},
+    {"args": ["aAzZmMnN"]},
+    {"args": ["1234 !@#$"]},
+    {"args": ["a", "b"]},
+    {"args": ["  spaces and\ttabs  "]}
+  ]
+}

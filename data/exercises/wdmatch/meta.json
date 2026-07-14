@@ -1,0 +1,19 @@
+{
+  "name": "wdmatch",
+  "level": 15,
+  "type": "program",
+  "files": ["wdmatch.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []},
+    {"args": ["faya", "fgvvfdxcacpolhyghbreda"]},
+    {"args": ["faya", "fgvvfdxcacpolhyghbred"]},
+    {"args": ["quarante deux", "qfqfsudf arzgsayns duf dqfnias eaznmd"]},
+    {"args": ["error", "nzzzzcvbserrfgorfgtyhrfgqswedcxdfr"]},
+    {"args": ["", "abc"]},
+    {"args": ["abc", ""]},
+    {"args": ["same", "same"]},
+    {"args": ["onlyone"]},
+    {"args": ["a", "b", "c"]}
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "rotone",
+  "level": 7,
+  "type": "program",
+  "files": ["rotone.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []},
+    {"args": ["abc"]},
+    {"args": ["Les stagiaires du staff ne sentent pas toujours tres bon."]},
+    {"args": ["AkjhZ zLKIJz , 23y "]},
+    {"args": [""]},
+    {"args": ["zZ aA"]},
+    {"args": ["a", "b"]},
+    {"args": ["!@# $%^ &*()"]}
+  ]
+}

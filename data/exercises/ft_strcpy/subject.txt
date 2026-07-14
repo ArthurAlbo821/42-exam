@@ -1,0 +1,13 @@
+Assignment name  : ft_strcpy
+Expected files   : ft_strcpy.c
+Allowed functions:
+--------------------------------------------------------------------------------
+
+Reproduce the behavior of the function strcpy (man strcpy).
+
+The function copies the string pointed to by s2, including the terminating
+null byte ('\0'), to the buffer pointed to by s1, and returns s1.
+
+Your function must be declared as follows:
+
+char	*ft_strcpy(char *s1, char *s2);

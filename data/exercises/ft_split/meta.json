@@ -1,0 +1,7 @@
+{
+  "name": "ft_split",
+  "level": 20,
+  "type": "function",
+  "files": ["ft_split.c"],
+  "allowed_functions": ["malloc"]
+}

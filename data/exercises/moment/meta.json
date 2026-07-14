@@ -1,0 +1,7 @@
+{
+  "name": "moment",
+  "level": 16,
+  "type": "function",
+  "files": ["moment.c"],
+  "allowed_functions": ["malloc", "free"]
+}

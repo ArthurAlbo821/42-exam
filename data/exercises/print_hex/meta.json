@@ -1,0 +1,18 @@
+{
+  "name": "print_hex",
+  "level": 13,
+  "type": "program",
+  "files": ["print_hex.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []},
+    {"args": ["0"]},
+    {"args": ["10"]},
+    {"args": ["255"]},
+    {"args": ["5156"]},
+    {"args": ["4294967295"]},
+    {"args": ["16"]},
+    {"args": ["3735928559"]},
+    {"args": ["42", "43"]}
+  ]
+}

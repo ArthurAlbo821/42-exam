@@ -1,0 +1,10 @@
+{
+  "name": "ft_print_reverse_alphabet",
+  "level": 2,
+  "type": "program",
+  "files": ["ft_print_reverse_alphabet.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []}
+  ]
+}

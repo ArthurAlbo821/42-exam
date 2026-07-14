@@ -1,0 +1,7 @@
+{
+  "name": "ft_ultimate_range",
+  "level": 17,
+  "type": "function",
+  "files": ["ft_ultimate_range.c"],
+  "allowed_functions": ["malloc"]
+}

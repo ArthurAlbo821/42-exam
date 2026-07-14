@@ -1,0 +1,7 @@
+{
+  "name": "ft_range",
+  "level": 14,
+  "type": "function",
+  "files": ["ft_range.c"],
+  "allowed_functions": ["malloc"]
+}

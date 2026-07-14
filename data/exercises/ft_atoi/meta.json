@@ -1,0 +1,7 @@
+{
+  "name": "ft_atoi",
+  "level": 8,
+  "type": "function",
+  "files": ["ft_atoi.c"],
+  "allowed_functions": []
+}

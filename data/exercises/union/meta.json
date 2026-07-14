@@ -1,0 +1,18 @@
+{
+  "name": "union",
+  "level": 15,
+  "type": "program",
+  "files": ["union.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []},
+    {"args": ["zpadinton", "paqefwtdjetyiytjneytjoeyjnejeyj"]},
+    {"args": ["ddf6vewg64f", "gtwthgdwthdwfteewhrtag6h4ffdhsd"]},
+    {"args": ["rien", "cette phrase ne cache rien"]},
+    {"args": ["", ""]},
+    {"args": ["", "abc"]},
+    {"args": ["abc", ""]},
+    {"args": ["onlyone"]},
+    {"args": ["a", "b", "c"]}
+  ]
+}

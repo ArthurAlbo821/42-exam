@@ -1,0 +1,10 @@
+{
+  "name": "ft_countdown",
+  "level": 2,
+  "type": "program",
+  "files": ["ft_countdown.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []}
+  ]
+}

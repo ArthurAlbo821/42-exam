@@ -1,0 +1,16 @@
+{
+  "name": "aff_last_param",
+  "level": 6,
+  "type": "program",
+  "files": ["aff_last_param.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []},
+    {"args": ["hello"]},
+    {"args": ["hello", "howdy", "bye"]},
+    {"args": ["one", "two", ""]},
+    {"args": [""]},
+    {"args": ["  spaced  out  "]},
+    {"args": ["a", "b", "c", "d", "e", "final"]}
+  ]
+}

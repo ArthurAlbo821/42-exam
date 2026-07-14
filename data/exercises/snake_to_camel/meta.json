@@ -1,0 +1,17 @@
+{
+  "name": "snake_to_camel",
+  "level": 13,
+  "type": "program",
+  "files": ["snake_to_camel.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []},
+    {"args": ["hello_world"]},
+    {"args": ["one_two_three_four"]},
+    {"args": ["already"]},
+    {"args": [""]},
+    {"args": ["a_b"]},
+    {"args": ["this_is_a_long_snake_case_string"]},
+    {"args": ["a_b", "c_d"]}
+  ]
+}

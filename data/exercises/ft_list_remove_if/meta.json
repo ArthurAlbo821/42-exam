@@ -1,0 +1,7 @@
+{
+  "name": "ft_list_remove_if",
+  "level": 20,
+  "type": "function",
+  "files": ["ft_list_remove_if.c", "ft_list.h"],
+  "allowed_functions": ["free"]
+}

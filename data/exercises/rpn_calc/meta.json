@@ -1,0 +1,20 @@
+{
+  "name": "rpn_calc",
+  "level": 20,
+  "type": "program",
+  "files": ["rpn_calc.c"],
+  "allowed_functions": ["atoi", "printf", "write", "malloc", "free"],
+  "tests": [
+    {"args": ["1 2 * 3 * 4 +"]},
+    {"args": ["1 2 3 4 +"]},
+    {"args": ["3 4 +"]},
+    {"args": ["5 10 9 / - 50 *"]},
+    {"args": ["-3 4 *"]},
+    {"args": ["1 a +"]},
+    {"args": ["1 2 + 3"]},
+    {"args": ["42"]},
+    {"args": ["10 3 %"]},
+    {"args": []},
+    {"args": ["3 4 +", "5 6 +"]}
+  ]
+}

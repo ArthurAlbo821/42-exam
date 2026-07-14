@@ -1,0 +1,10 @@
+{
+  "name": "only_z",
+  "level": 2,
+  "type": "program",
+  "files": ["only_z.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []}
+  ]
+}

@@ -1,0 +1,25 @@
+Assignment name  : search_and_replace
+Expected files   : search_and_replace.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program called search_and_replace that takes 3 arguments: the first
+argument is a string in which to replace every occurrence of the character
+given as the second argument by the character given as the third argument.
+
+The result is followed by a newline.
+
+If the number of arguments is not 3, or if the second or third argument is
+not exactly one character long, the program displays only a newline.
+
+Examples:
+
+$> ./search_and_replace "Papache est un sabre" "a" "o" | cat -e
+Popoche est un sobre$
+$> ./search_and_replace "zaz" "art" "u" | cat -e
+$
+$> ./search_and_replace "zaz" "r" "u" | cat -e
+zaz$
+$> ./search_and_replace "jacob" "a" "b" "c" | cat -e
+$
+$>

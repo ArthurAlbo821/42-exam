@@ -1,0 +1,20 @@
+{
+  "name": "ord_alphlong",
+  "level": 19,
+  "type": "program",
+  "files": ["ord_alphlong.c"],
+  "allowed_functions": ["write", "malloc", "free"],
+  "tests": [
+    {"args": ["hello to the world of pisciners"]},
+    {"args": ["bb aa cc"]},
+    {"args": ["Zoo apple Bee zebra"]},
+    {"args": ["single"]},
+    {"args": ["\t  leading and\ttrailing  spaces \t"]},
+    {"args": ["a bb ccc dddd"]},
+    {"args": [""]},
+    {"args": ["      "]},
+    {"args": ["\t\t"]},
+    {"args": ["one two", "ignored"]},
+    {"args": []}
+  ]
+}

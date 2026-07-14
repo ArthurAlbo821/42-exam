@@ -1,0 +1,19 @@
+{
+  "name": "epur_str",
+  "level": 12,
+  "type": "program",
+  "files": ["epur_str.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []},
+    {"args": ["See? It's easy to print the same thing"]},
+    {"args": [" this        time it     will     be    more complex  . "]},
+    {"args": ["No S*** Sherlock...", "nAsTy"]},
+    {"args": [""]},
+    {"args": ["   \t  "]},
+    {"args": ["single"]},
+    {"args": ["\ttabs\tand  spaces \t mixed\t"]},
+    {"args": ["  leading"]},
+    {"args": ["trailing   "]}
+  ]
+}

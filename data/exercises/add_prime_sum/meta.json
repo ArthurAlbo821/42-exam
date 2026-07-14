@@ -1,0 +1,19 @@
+{
+  "name": "add_prime_sum",
+  "level": 13,
+  "type": "program",
+  "files": ["add_prime_sum.c"],
+  "allowed_functions": ["write", "exit"],
+  "tests": [
+    {"args": ["5"]},
+    {"args": ["7"]},
+    {"args": ["1"]},
+    {"args": ["2"]},
+    {"args": ["100"]},
+    {"args": ["abc"]},
+    {"args": ["-5"]},
+    {"args": ["5", "7"]},
+    {"args": []},
+    {"args": ["10000"]}
+  ]
+}

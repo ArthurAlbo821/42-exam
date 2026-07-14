@@ -1,0 +1,17 @@
+{
+  "name": "camel_to_snake",
+  "level": 13,
+  "type": "program",
+  "files": ["camel_to_snake.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []},
+    {"args": ["helloWorld"]},
+    {"args": ["oneTwoThreeFour"]},
+    {"args": ["already"]},
+    {"args": [""]},
+    {"args": ["aB"]},
+    {"args": ["thisIsALongCamelCaseString"]},
+    {"args": ["aB", "cD"]}
+  ]
+}

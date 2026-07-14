@@ -1,0 +1,10 @@
+{
+  "name": "maff_alpha",
+  "level": 1,
+  "type": "program",
+  "files": ["maff_alpha.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []}
+  ]
+}

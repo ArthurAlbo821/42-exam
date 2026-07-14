@@ -1,0 +1,28 @@
+Assignment name  : alpha_mirror
+Expected files   : alpha_mirror.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program called alpha_mirror that takes a string and displays this
+string after replacing each of its letters by its opposite in the alphabet:
+
+'a' becomes 'z', 'b' becomes 'y', 'z' becomes 'a', 'd' becomes 'w', ...
+
+The same rule applies to uppercase letters ('A' becomes 'Z', 'Z' becomes
+'A', ...). Case is respected.
+
+Characters that are not letters are not changed.
+
+The result is followed by a newline.
+
+If the number of arguments is not 1, display only a newline.
+
+Examples:
+
+$> ./alpha_mirror "abc" | cat -e
+zyx$
+$> ./alpha_mirror "My horse is Amazing." | cat -e
+Nb slihv rh Znzarmt.$
+$> ./alpha_mirror | cat -e
+$
+$>

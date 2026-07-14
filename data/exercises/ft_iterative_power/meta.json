@@ -1,0 +1,7 @@
+{
+  "name": "ft_iterative_power",
+  "level": 5,
+  "type": "function",
+  "files": ["ft_iterative_power.c"],
+  "allowed_functions": []
+}

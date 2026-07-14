@@ -1,0 +1,7 @@
+{
+  "name": "ft_strpbrk",
+  "level": 8,
+  "type": "function",
+  "files": ["ft_strpbrk.c"],
+  "allowed_functions": []
+}

@@ -1,0 +1,24 @@
+Assignment name  : str_maxlenoc
+Expected files   : str_maxlenoc.c
+Allowed functions: write, malloc, free
+--------------------------------------------------------------------------------
+
+Write a program that takes one or more strings and displays, followed by a
+newline, the longest string that appears as a substring in EVERY parameter.
+
+The empty string is a substring of any string, so when the parameters share no
+common substring, only a newline is displayed. When several common substrings
+have the same greatest length, display the one that appears first in the first
+parameter.
+
+If no parameter is given, display only a newline.
+
+Examples:
+
+$> ./str_maxlenoc "ab" "bac" "abacabccabcb" | cat -e
+a$
+$> ./str_maxlenoc "bonjour" "salut" "bonjour" "bonjour" | cat -e
+u$
+$> ./str_maxlenoc "bosdsdfnjodur" "atehhellosd" "afkuonjosurafg" "headfgllosf" "fghellosag" "afdfbosnjourafg" | cat -e
+os$
+$>

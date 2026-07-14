@@ -1,0 +1,18 @@
+{
+  "name": "brackets",
+  "level": 19,
+  "type": "program",
+  "files": ["brackets.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": ["(johndoe)"]},
+    {"args": ["([)]"]},
+    {"args": ["", "{[(0 + 0)(1 + 1)](3*(-1)){()}}"]},
+    {"args": ["(("]},
+    {"args": ["]"]},
+    {"args": ["{[()]}"]},
+    {"args": ["no brackets here"]},
+    {"args": ["a(b)c[d]e{f}"]},
+    {"args": []}
+  ]
+}

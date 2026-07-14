@@ -1,0 +1,14 @@
+Assignment name  : ft_strpbrk
+Expected files   : ft_strpbrk.c
+Allowed functions:
+--------------------------------------------------------------------------------
+
+Reproduce the behavior of the function strpbrk (man strpbrk).
+
+The function locates the first occurrence in the string s1 of any of the
+characters in the string s2, and returns a pointer to that character. If no
+character of s2 is found in s1, it returns NULL.
+
+Your function must be declared as follows:
+
+char	*ft_strpbrk(const char *s1, const char *s2);

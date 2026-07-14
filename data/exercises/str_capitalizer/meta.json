@@ -1,0 +1,17 @@
+{
+  "name": "str_capitalizer",
+  "level": 12,
+  "type": "program",
+  "files": ["str_capitalizer.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []},
+    {"args": ["a FiRSt LiTTlE TESt"]},
+    {"args": ["__SecOND teST A LITTLE   BiT   hArDer", "  This  One  IS   a LiTTLe   BiT    eASIER ", "FOR YOU maYbe"]},
+    {"args": ["\tTABS\there\tAND\tthere"]},
+    {"args": ["   leading SPACES here"]},
+    {"args": [""]},
+    {"args": ["hello"]},
+    {"args": ["MiXeD cAsE 42 w0rDs", ""]}
+  ]
+}

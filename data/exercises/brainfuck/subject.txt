@@ -1,0 +1,29 @@
+Assignment name  : brainfuck
+Expected files   : brainfuck.c
+Allowed functions: write, malloc, free
+--------------------------------------------------------------------------------
+
+Write a Brainfuck interpreter.
+
+The Brainfuck source code is passed as the first and only argument. It runs on
+a tape of 2048 bytes, all initialized to zero, with a data pointer that starts
+on the first cell. The eight operators are:
+
+  >   move the data pointer one cell to the right
+  <   move the data pointer one cell to the left
+  +   increment the byte at the data pointer
+  -   decrement the byte at the data pointer
+  .   output the byte at the data pointer
+  [   if the byte at the data pointer is 0, jump forward past the matching ]
+  ]   if the byte at the data pointer is not 0, jump back after the matching [
+
+Any other character is a comment and must be ignored. The provided source code
+is always valid (brackets are balanced) and never moves the pointer out of the
+tape.
+
+If the number of parameters is not 1, display only a newline.
+
+Example:
+
+$> ./brainfuck "++++++++[>++++++++<-]>+." | cat -e
+A$>

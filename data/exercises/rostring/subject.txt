@@ -1,0 +1,26 @@
+Assignment name  : rostring
+Expected files   : rostring.c
+Allowed functions: write, malloc, free
+--------------------------------------------------------------------------------
+
+Write a program that takes a string and displays this string with its words
+rotated by one to the left, followed by a newline.
+
+This means the first word takes the place of the last one, and every other
+word is shifted one place to the left.
+
+A word is a section of string delimited by spaces/tabs, or by the start/end
+of the string. The displayed words must be separated by exactly one space.
+
+If the number of arguments is not 1, the program displays a newline.
+
+Examples:
+
+$> ./rostring "abc   " | cat -e
+abc$
+$> ./rostring "Que la      lumiere soit et la lumiere fut" | cat -e
+la lumiere soit et la lumiere fut Que$
+$> ./rostring "     AkjhZ zLKIJz , 23y" | cat -e
+zLKIJz , 23y AkjhZ$
+$> ./rostring | cat -e
+$

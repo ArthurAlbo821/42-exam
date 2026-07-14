@@ -1,0 +1,12 @@
+Assignment name  : ft_sort_int_tab
+Expected files   : ft_sort_int_tab.c
+Allowed functions:
+--------------------------------------------------------------------------------
+
+Write a function that sorts, in place, an array of int, in ascending order.
+
+Its number of elements is given by the argument size.
+
+Your function must be declared as follows:
+
+void	ft_sort_int_tab(int *tab, int size);

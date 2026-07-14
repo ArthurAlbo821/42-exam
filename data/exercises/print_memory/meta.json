@@ -1,0 +1,7 @@
+{
+  "name": "print_memory",
+  "level": 19,
+  "type": "function",
+  "files": ["print_memory.c"],
+  "allowed_functions": ["write"]
+}

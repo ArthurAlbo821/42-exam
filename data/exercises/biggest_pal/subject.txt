@@ -1,0 +1,23 @@
+Assignment name  : biggest_pal
+Expected files   : biggest_pal.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that takes a string (made of lowercase letters only) and
+displays the longest palindromic substring it contains, followed by a newline.
+
+A palindrome reads the same forwards and backwards. When several substrings
+share the greatest length, display the LAST one (the one that starts furthest
+to the right).
+
+If the number of parameters is not 1, display only a newline.
+
+Examples:
+
+$> ./biggest_pal "abcba" | cat -e
+abcba$
+$> ./biggest_pal "aaaaaaaaaabbcbbaaaa" | cat -e
+aaaabbcbbaaaa$
+$> ./biggest_pal "aeibaabaammaabaalek" | cat -e
+aabaammaabaa$
+$>

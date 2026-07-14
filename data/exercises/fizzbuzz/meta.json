@@ -1,0 +1,10 @@
+{
+  "name": "fizzbuzz",
+  "level": 2,
+  "type": "program",
+  "files": ["fizzbuzz.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []}
+  ]
+}

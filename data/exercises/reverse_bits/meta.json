@@ -1,0 +1,7 @@
+{
+  "name": "reverse_bits",
+  "level": 11,
+  "type": "function",
+  "files": ["reverse_bits.c"],
+  "allowed_functions": []
+}

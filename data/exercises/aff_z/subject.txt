@@ -1,0 +1,21 @@
+Assignment name  : aff_z
+Expected files   : aff_z.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that takes a string and displays the first 'z' character it
+contains, followed by a newline.
+
+If the string contains no 'z', display only a newline.
+
+If the number of parameters is not 1, display 'z' followed by a newline.
+
+Examples:
+
+$> ./aff_z "zaz sent le poney" | cat -e
+z$
+$> ./aff_z "dubO a POIL" | cat -e
+$
+$> ./aff_z | cat -e
+z$
+$>

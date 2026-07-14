@@ -1,0 +1,7 @@
+{
+  "name": "ft_strspn",
+  "level": 10,
+  "type": "function",
+  "files": ["ft_strspn.c"],
+  "allowed_functions": []
+}

@@ -1,0 +1,38 @@
+Assignment name  : ord_alphlong
+Expected files   : ord_alphlong.c
+Allowed functions: write, malloc, free
+--------------------------------------------------------------------------------
+
+Write a program that takes a string and displays its words sorted, separated
+by a single space, followed by a newline.
+
+A word is a section of string delimited by spaces/tabs or by the start/end of
+the string.
+
+The words must be sorted according to the following rules, in this order:
+
+  - by increasing length (a shorter word comes before a longer word);
+  - for two words of the same length, in ascending ASCII order (the word that
+    is smaller when compared character by character, using the ASCII value of
+    each character, comes first).
+
+This defines a total order, so the result is always deterministic. The
+original spacing and the number of separators are not preserved: the words
+are simply displayed in the sorted order, separated by exactly one space.
+
+If the number of parameters is not 1, or if there are no words, simply
+display a newline.
+
+Examples:
+
+$> ./ord_alphlong "hello to the world of pisciners" | cat -e
+to of the hello world pisciners$
+$> ./ord_alphlong "bb aa cc" | cat -e
+aa bb cc$
+$> ./ord_alphlong "  a bb   ccc " | cat -e
+a bb ccc$
+$> ./ord_alphlong "" | cat -e
+$
+$> ./ord_alphlong "one two" "three" | cat -e
+$
+$>

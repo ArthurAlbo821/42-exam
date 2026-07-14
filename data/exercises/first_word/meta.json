@@ -1,0 +1,18 @@
+{
+  "name": "first_word",
+  "level": 6,
+  "type": "program",
+  "files": ["first_word.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []},
+    {"args": ["hello there"]},
+    {"args": ["   lorem,ipsum  "]},
+    {"args": [""]},
+    {"args": ["      "]},
+    {"args": ["a"]},
+    {"args": ["\tone two three"]},
+    {"args": ["hello", "there"]},
+    {"args": ["  \t multiple\tseparators   here "]}
+  ]
+}

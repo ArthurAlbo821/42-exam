@@ -1,0 +1,48 @@
+Assignment name  : flood_fill
+Expected files   : flood_fill.c
+Allowed functions:
+--------------------------------------------------------------------------------
+
+Write a function that fills a zone of a 2D area of characters, in the same
+way as the "bucket fill" tool of any drawing software.
+
+The area is a rectangular array of characters. Its dimensions are given by a
+t_point structure, where x is the width (number of columns) and y is the
+height (number of lines). A second t_point named begin gives the coordinates
+of the starting cell (begin.x is the column, begin.y is the line).
+
+Starting from the cell at begin, your function must replace with the
+character 'F' every cell that can be reached from it, moving only up, down,
+left or right (never in diagonal), and only through cells that hold the same
+character as the starting cell.
+
+Your function must be declared as follows:
+
+void	flood_fill(char **tab, t_point size, t_point begin);
+
+You must use the following structure. Copy its definition into your
+flood_fill.c file:
+
+typedef struct	s_point
+{
+	int	x;
+	int	y;
+}	t_point;
+
+Example:
+
+Given the following area (size {8, 5}) and begin {2, 2}:
+
+11111111
+10001001
+10010001
+10110001
+11100001
+
+your function transforms it into:
+
+11111111
+1FFF1001
+1FF10001
+1F110001
+11100001

@@ -1,0 +1,19 @@
+Assignment name  : aff_last_param
+Expected files   : aff_last_param.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that displays its last command-line argument, followed by a
+newline.
+
+If there are no arguments, simply display a newline.
+
+Examples:
+
+$> ./aff_last_param "hello" "howdy" "bye" | cat -e
+bye$
+$> ./aff_last_param "42" | cat -e
+42$
+$> ./aff_last_param | cat -e
+$
+$>

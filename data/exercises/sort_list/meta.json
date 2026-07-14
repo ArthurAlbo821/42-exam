@@ -1,0 +1,7 @@
+{
+  "name": "sort_list",
+  "level": 20,
+  "type": "function",
+  "files": ["sort_list.c", "ft_list.h"],
+  "allowed_functions": []
+}

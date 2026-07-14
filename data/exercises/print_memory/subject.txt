@@ -1,0 +1,34 @@
+Assignment name  : print_memory
+Expected files   : print_memory.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a function that dumps a region of memory to the standard output.
+
+The function displays the "size" bytes located at address "addr", 16 bytes per
+line. Each line is made of:
+
+  - the hexadecimal representation of the 16 bytes, written as 8 groups of 4
+    lowercase hexadecimal digits (2 bytes per group), the groups separated by a
+    single space;
+  - a single space;
+  - the ASCII representation of the same 16 bytes, where every printable
+    character (from 32 to 126 included) is shown as-is and every other byte is
+    shown as a '.';
+  - a newline.
+
+On the last line, when fewer than 16 bytes remain, the hexadecimal area is
+padded with spaces so that the ASCII column stays aligned.
+
+If size is 0, the function displays nothing.
+
+Your function must be declared as follows:
+
+void	print_memory(const void *addr, size_t size);
+
+Example, for an int tab[10] = {0, 23, 150, 255, 12, 16, 21, 42} on a
+little-endian machine (40 bytes):
+
+0000 0000 1700 0000 9600 0000 ff00 0000 ................
+0c00 0000 1000 0000 1500 0000 2a00 0000 ............*...
+0000 0000 0000 0000                     ........

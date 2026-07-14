@@ -1,0 +1,19 @@
+{
+  "name": "expand_str",
+  "level": 16,
+  "type": "program",
+  "files": ["expand_str.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": ["  Let    there\tbe   light  "]},
+    {"args": ["only"]},
+    {"args": [""]},
+    {"args": ["   \t \t  "]},
+    {"args": []},
+    {"args": ["a", "b"]},
+    {"args": ["\tstart with a tab"]},
+    {"args": ["trailing spaces   "]},
+    {"args": ["one  two   three\tfour"]},
+    {"args": ["  a  "]}
+  ]
+}

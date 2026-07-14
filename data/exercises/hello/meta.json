@@ -1,0 +1,10 @@
+{
+  "name": "hello",
+  "level": 1,
+  "type": "program",
+  "files": ["hello.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []}
+  ]
+}

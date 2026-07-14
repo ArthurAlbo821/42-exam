@@ -1,0 +1,19 @@
+{
+  "name": "hidenp",
+  "level": 16,
+  "type": "program",
+  "files": ["hidenp.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": ["fgex.;", "tyf34gdgf;'ektufjhgdgex.;.;rtjynur;"]},
+    {"args": ["abc", "ahlsdkjfbqc"]},
+    {"args": ["abc", "btarc"]},
+    {"args": ["", "totally hidden"]},
+    {"args": ["abc", ""]},
+    {"args": ["", ""]},
+    {"args": ["onlyone"]},
+    {"args": []},
+    {"args": ["a", "b", "c"]},
+    {"args": ["zz", "z"]}
+  ]
+}

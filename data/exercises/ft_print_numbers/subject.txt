@@ -1,0 +1,12 @@
+Assignment name  : ft_print_numbers
+Expected files   : ft_print_numbers.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that displays all digits, in ascending order, starting from
+'0', followed by a newline.
+
+Example:
+
+$> ./ft_print_numbers | cat -e
+0123456789$

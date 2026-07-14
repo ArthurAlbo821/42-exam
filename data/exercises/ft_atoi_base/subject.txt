@@ -1,0 +1,31 @@
+Assignment name  : ft_atoi_base
+Expected files   : ft_atoi_base.c
+Allowed functions:
+--------------------------------------------------------------------------------
+
+Write a function that takes a string representing a number written in a given
+base, and returns this number as an int.
+
+The base is expressed as an int between 2 and 16 included. The digits used are
+0123456789abcdef; they are, of course, to be trimmed according to the
+requested base. For example, base 4 uses "0123" and base 16 uses
+"0123456789abcdef". Uppercase letters must not be recognized.
+
+A single minus sign ('-') is interpreted only if it is the very first
+character of the string.
+
+The conversion stops at the first character that is not a valid digit in the
+requested base.
+
+The string will always represent a value that fits in an int, and str_base
+will always be valid.
+
+Your function must be declared as follows:
+
+int	ft_atoi_base(const char *str, int str_base);
+
+Examples:
+
+ft_atoi_base("12fdb3", 16) returns 1244595
+ft_atoi_base("-101", 2) returns -5
+ft_atoi_base("zz", 16) returns 0

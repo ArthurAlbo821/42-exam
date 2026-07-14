@@ -1,0 +1,27 @@
+Assignment name  : str_capitalizer
+Expected files   : str_capitalizer.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that takes one or several strings as arguments.
+
+For each argument, this program must turn the first character of each word to
+uppercase (if it's a letter), turn the rest to lowercase, then display the
+result followed by a newline.
+
+A word is a section of string delimited by spaces/tabs or by the start/end of
+the string.
+
+If the number of arguments is 0, the program must display a newline.
+
+Examples:
+
+$> ./str_capitalizer | cat -e
+$
+$> ./str_capitalizer "a FiRSt LiTTlE TESt" | cat -e
+A First Little Test$
+$> ./str_capitalizer "__SecOND teST A LITTLE   BiT   hArDer" "  This  One  IS   a LiTTLe   BiT    eASIER " "FOR YOU maYbe" | cat -e
+__second Test A Little   Bit   Harder$
+  This  One  Is   A Little   Bit    Easier $
+For You Maybe$
+$>

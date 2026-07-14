@@ -1,0 +1,17 @@
+{
+  "name": "rot13",
+  "level": 7,
+  "type": "program",
+  "files": ["rot13.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []},
+    {"args": ["abc"]},
+    {"args": ["My horse is Amazing."]},
+    {"args": ["AkjhZ zLKIJz , 23y "]},
+    {"args": [""]},
+    {"args": ["Hello, World! 42"]},
+    {"args": ["a", "b"]},
+    {"args": ["nowhere NOWHERE"]}
+  ]
+}

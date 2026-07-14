@@ -1,0 +1,18 @@
+{
+  "name": "fprime",
+  "level": 18,
+  "type": "program",
+  "files": ["fprime.c"],
+  "allowed_functions": ["printf", "atoi"],
+  "tests": [
+    {"args": ["225225"]},
+    {"args": ["8333325"]},
+    {"args": ["9539"]},
+    {"args": ["804577"]},
+    {"args": ["42"]},
+    {"args": ["1"]},
+    {"args": ["1024"]},
+    {"args": []},
+    {"args": ["2", "3"]}
+  ]
+}

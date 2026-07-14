@@ -1,0 +1,17 @@
+{
+  "name": "aff_first_param",
+  "level": 4,
+  "type": "program",
+  "files": ["aff_first_param.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []},
+    {"args": ["hello"]},
+    {"args": ["one", "two", "three"]},
+    {"args": [""]},
+    {"args": ["a b c"]},
+    {"args": ["first", "second"]},
+    {"args": ["  spaces around  "]},
+    {"args": ["special !@#$%", "ignored"]}
+  ]
+}

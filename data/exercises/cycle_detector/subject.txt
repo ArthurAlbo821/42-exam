@@ -1,0 +1,26 @@
+Assignment name  : cycle_detector
+Expected files   : cycle_detector.c, list.h
+Allowed functions: malloc, free
+--------------------------------------------------------------------------------
+
+Write a function that detects whether a linked list contains a cycle.
+
+The function returns 1 if the list contains a cycle, and 0 otherwise. An empty
+list contains no cycle.
+
+Your function must be declared as follows:
+
+int	cycle_detector(const t_list *list);
+
+You must use the following structure, and turn it in as a file called list.h:
+
+#ifndef LIST_H
+# define LIST_H
+
+typedef struct s_list
+{
+	int				data;
+	struct s_list	*next;
+}	t_list;
+
+#endif

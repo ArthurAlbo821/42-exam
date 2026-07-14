@@ -1,0 +1,33 @@
+Assignment name  : moment
+Expected files   : moment.c
+Allowed functions: malloc, free
+--------------------------------------------------------------------------------
+
+Write a function that takes a duration in seconds and returns a freshly
+allocated string describing how long ago that duration is.
+
+The string has the form "X unit ago." where X is a number and unit is the
+LARGEST time unit whose quotient by the duration is at least 1, chosen among:
+
+  seconds (used when the duration is strictly less than 60)
+  minutes (60 seconds)
+  hours   (3600 seconds)
+  days    (86400 seconds)
+  months  (2592000 seconds, i.e. 30 days)
+
+Years are ignored. When X equals 1, the unit is written in the singular
+(second, minute, hour, day, month); otherwise it is written in the plural.
+
+Your function must be declared as follows:
+
+char	*moment(unsigned int duration);
+
+Examples:
+
+  moment(0)    -> "0 seconds ago."
+  moment(1)    -> "1 second ago."
+  moment(30)   -> "30 seconds ago."
+  moment(65)   -> "1 minute ago."
+  moment(120)  -> "2 minutes ago."
+  moment(2400) -> "40 minutes ago."
+  moment(3735) -> "1 hour ago."

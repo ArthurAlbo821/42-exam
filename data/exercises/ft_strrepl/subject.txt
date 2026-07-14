@@ -1,0 +1,11 @@
+Assignment name  : ft_strrepl
+Expected files   : ft_strrepl.c
+Allowed functions:
+--------------------------------------------------------------------------------
+
+Write a function that replaces, in place, every occurrence of the character c1
+by the character c2 in the string str, and returns str.
+
+Your function must be declared as follows:
+
+char	*ft_strrepl(char *str, char c1, char c2);

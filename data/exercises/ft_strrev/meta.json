@@ -1,0 +1,7 @@
+{
+  "name": "ft_strrev",
+  "level": 8,
+  "type": "function",
+  "files": ["ft_strrev.c"],
+  "allowed_functions": []
+}

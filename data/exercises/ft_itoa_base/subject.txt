@@ -1,0 +1,26 @@
+Assignment name  : ft_itoa_base
+Expected files   : ft_itoa_base.c
+Allowed functions: malloc
+--------------------------------------------------------------------------------
+
+Write a function that converts an integer number into a newly allocated string
+in the given base.
+
+The base is expressed as a number between 2 and 16. The digits used are, in
+order: "0123456789ABCDEF" (uppercase letters).
+
+If the base is 10 and the value is negative, the string must start with a '-'
+sign. For any other base, the value must be treated as an unsigned integer.
+
+The returned string must be allocated with malloc and terminated by a '\0'.
+
+Your function must be declared as follows:
+
+char	*ft_itoa_base(int value, int base);
+
+Examples:
+
+ft_itoa_base(42, 2)   returns "101010"
+ft_itoa_base(255, 16) returns "FF"
+ft_itoa_base(-1, 16)  returns "FFFFFFFF"
+ft_itoa_base(-42, 10) returns "-42"

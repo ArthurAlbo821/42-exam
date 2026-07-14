@@ -1,0 +1,19 @@
+{
+  "name": "rev_wstr",
+  "level": 18,
+  "type": "program",
+  "files": ["rev_wstr.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": ["You hate people! But I love gatherings. Isn't it ironic?"]},
+    {"args": ["abcdefghijklm"]},
+    {"args": ["  leading and trailing  "]},
+    {"args": [""]},
+    {"args": ["   \t  "]},
+    {"args": []},
+    {"args": ["a", "b"]},
+    {"args": ["one"]},
+    {"args": ["\tmix\t of\ttabs and  spaces "]},
+    {"args": ["Wingardium Leviosa"]}
+  ]
+}

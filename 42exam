@@ -1,0 +1,9 @@
+#!/bin/sh
+# 42exam — lance le menu du simulateur d'examen (fonctionne aussi via symlink)
+SELF="$0"
+while [ -L "$SELF" ]; do
+	DIR="$(cd "$(dirname "$SELF")" && pwd)"
+	SELF="$(readlink "$SELF")"
+	case "$SELF" in /*) ;; *) SELF="$DIR/$SELF" ;; esac
+done
+cd "$(dirname "$SELF")" && exec python3 menu.py "$@"

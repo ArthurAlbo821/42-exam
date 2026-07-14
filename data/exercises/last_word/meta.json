@@ -1,0 +1,19 @@
+{
+  "name": "last_word",
+  "level": 6,
+  "type": "program",
+  "files": ["last_word.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []},
+    {"args": ["FOR PONY"]},
+    {"args": ["this        ...       is sparta, then again, maybe    not"]},
+    {"args": ["hello there   "]},
+    {"args": ["\tfoo\tbar\t \t"]},
+    {"args": ["a"]},
+    {"args": [""]},
+    {"args": ["      "]},
+    {"args": ["hello", "there"]},
+    {"args": ["  lorem,ipsum  "]}
+  ]
+}

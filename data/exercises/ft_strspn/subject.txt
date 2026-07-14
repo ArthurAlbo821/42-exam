@@ -1,0 +1,13 @@
+Assignment name  : ft_strspn
+Expected files   : ft_strspn.c
+Allowed functions:
+--------------------------------------------------------------------------------
+
+Reproduce the behavior of the function strspn (man strspn).
+
+The function returns the length of the initial segment of the string s which
+consists entirely of characters in the string accept.
+
+Your function must be declared as follows:
+
+size_t	ft_strspn(const char *s, const char *accept);

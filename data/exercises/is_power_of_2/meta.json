@@ -1,0 +1,7 @@
+{
+  "name": "is_power_of_2",
+  "level": 10,
+  "type": "function",
+  "files": ["is_power_of_2.c"],
+  "allowed_functions": []
+}

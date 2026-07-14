@@ -1,0 +1,17 @@
+{
+  "name": "ulstr",
+  "level": 9,
+  "type": "program",
+  "files": ["ulstr.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []},
+    {"args": ["L'eSPrit nE peUt plUs pRogResSer s'Il staGne"]},
+    {"args": ["abc DEF"]},
+    {"args": [""]},
+    {"args": ["1234 !@#$"]},
+    {"args": ["a", "b"]},
+    {"args": ["   MiXeD CaSe 42   "]},
+    {"args": ["zZaA"]}
+  ]
+}

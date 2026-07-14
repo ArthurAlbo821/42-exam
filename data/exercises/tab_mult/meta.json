@@ -1,0 +1,17 @@
+{
+  "name": "tab_mult",
+  "level": 17,
+  "type": "program",
+  "files": ["tab_mult.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": ["5"]},
+    {"args": ["9"]},
+    {"args": ["1"]},
+    {"args": ["19"]},
+    {"args": []},
+    {"args": ["3", "4"]},
+    {"args": ["12"]},
+    {"args": ["7"]}
+  ]
+}

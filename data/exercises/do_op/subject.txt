@@ -1,0 +1,26 @@
+Assignment name  : do_op
+Expected files   : do_op.c
+Allowed functions: atoi, printf, write
+--------------------------------------------------------------------------------
+
+Write a program that takes three strings:
+- The first and the third one are representations of base-10 signed integers
+  that fit in an int.
+- The second one is an arithmetic operator taken from: + - * / %
+
+The program must display the result of the requested arithmetic operation,
+followed by a newline. If the number of parameters is not 3, the program
+just displays a newline.
+
+The operands, and the result of the operation, fit in an int. Division and
+modulo by zero will not be tested.
+
+Examples:
+
+$> ./do_op "123" "*" 456 | cat -e
+56088$
+$> ./do_op "9828" "%" "42" | cat -e
+0$
+$> ./do_op "1" "+" "1" | cat -e
+2$
+$>

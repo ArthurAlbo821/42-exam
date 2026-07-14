@@ -1,0 +1,16 @@
+Assignment name  : ft_iterative_factorial
+Expected files   : ft_iterative_factorial.c
+Allowed functions:
+--------------------------------------------------------------------------------
+
+Write an iterative function that returns the factorial of the number given as
+a parameter.
+
+If the parameter is a negative number, the function returns 0. The factorial
+of 0 is 1.
+
+Overflows do not have to be handled.
+
+Your function must be declared as follows:
+
+int	ft_iterative_factorial(int nb);

@@ -1,0 +1,7 @@
+{
+  "name": "lcm",
+  "level": 11,
+  "type": "function",
+  "files": ["lcm.c"],
+  "allowed_functions": []
+}

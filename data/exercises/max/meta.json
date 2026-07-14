@@ -1,0 +1,7 @@
+{
+  "name": "max",
+  "level": 11,
+  "type": "function",
+  "files": ["max.c"],
+  "allowed_functions": []
+}

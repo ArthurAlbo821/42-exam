@@ -1,0 +1,7 @@
+{
+  "name": "ft_strrepl",
+  "level": 9,
+  "type": "function",
+  "files": ["ft_strrepl.c"],
+  "allowed_functions": []
+}

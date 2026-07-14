@@ -1,0 +1,7 @@
+{
+  "name": "swap_bits",
+  "level": 11,
+  "type": "function",
+  "files": ["swap_bits.c"],
+  "allowed_functions": []
+}

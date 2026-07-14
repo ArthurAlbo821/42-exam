@@ -1,0 +1,15 @@
+{
+  "name": "paramsum",
+  "level": 4,
+  "type": "program",
+  "files": ["paramsum.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": []},
+    {"args": ["a"]},
+    {"args": ["1", "2", "3"]},
+    {"args": ["1", "2", "3", "5", "7", "24"]},
+    {"args": ["", ""]},
+    {"args": ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]}
+  ]
+}

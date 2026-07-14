@@ -1,0 +1,18 @@
+{
+  "name": "aff_a",
+  "level": 1,
+  "type": "program",
+  "files": ["aff_a.c"],
+  "allowed_functions": ["write"],
+  "tests": [
+    {"args": ["abc"]},
+    {"args": ["dubO a POIL"]},
+    {"args": ["zz sent le poney"]},
+    {"args": [""]},
+    {"args": []},
+    {"args": ["abc", "def"]},
+    {"args": ["a"]},
+    {"args": ["bcdefgh"]},
+    {"args": ["    a    "]}
+  ]
+}

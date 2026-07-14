@@ -1,0 +1,7 @@
+Assignment name  : ft_print_alphabet
+Expected files   : ft_print_alphabet.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that displays the alphabet in lowercase, in ascending
+order, starting from the letter 'a', followed by a newline.

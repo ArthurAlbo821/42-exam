@@ -1,0 +1,7 @@
+{
+  "name": "ft_iterative_factorial",
+  "level": 5,
+  "type": "function",
+  "files": ["ft_iterative_factorial.c"],
+  "allowed_functions": []
+}

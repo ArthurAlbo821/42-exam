@@ -1,0 +1,33 @@
+Assignment name  : ft_list_remove_if
+Expected files   : ft_list_remove_if.c, ft_list.h
+Allowed functions: free
+--------------------------------------------------------------------------------
+
+Write a function that removes from a linked list every element whose data is
+"equal" to a reference data.
+
+Two data are considered equal when the comparison function cmp returns 0 (like
+strcmp does). Only the removed nodes must be freed, not the data they point to.
+
+Your function must be declared as follows:
+
+void	ft_list_remove_if(t_list **begin_list, void *data_ref,
+			int (*cmp)(void *, void *));
+
+Note: the historical subject writes the comparator as int (*cmp)(), but a
+non-prototype declaration is rejected under -Wall -Wextra -Werror, so the fully
+prototyped form int (*cmp)(void *, void *) must be used.
+
+You must use the following structure, and turn it in as a file called
+ft_list.h:
+
+#ifndef FT_LIST_H
+# define FT_LIST_H
+
+typedef struct s_list
+{
+	struct s_list	*next;
+	void			*data;
+}	t_list;
+
+#endif
