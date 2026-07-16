@@ -1,0 +1,9 @@
+{
+  "name": "ft_strcat",
+  "level": 8,
+  "type": "function",
+  "files": [
+    "ft_strcat.c"
+  ],
+  "allowed_functions": []
+}

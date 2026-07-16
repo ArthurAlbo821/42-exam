@@ -1,0 +1,10 @@
+Assignment name  : ft_strncat
+Expected files   : ft_strncat.c
+Allowed functions: 
+--------------------------------------------------------------------------------
+
+Reproduce the behavior of the function strncat (man strncat).
+
+Your function must be declared as follows:
+
+char	*ft_strncat(char *dest, char *src, unsigned int nb);

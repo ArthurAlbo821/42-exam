@@ -1,0 +1,9 @@
+{
+  "name": "ft_strncmp",
+  "level": 4,
+  "type": "function",
+  "files": [
+    "ft_strncmp.c"
+  ],
+  "allowed_functions": []
+}

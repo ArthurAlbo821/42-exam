@@ -1,0 +1,9 @@
+{
+  "name": "ft_strstr",
+  "level": 8,
+  "type": "function",
+  "files": [
+    "ft_strstr.c"
+  ],
+  "allowed_functions": []
+}
