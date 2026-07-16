@@ -1,0 +1,12 @@
+Assignment name  : ft_putstr_non_printable
+Expected files   : ft_putstr_non_printable.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Create a function that displays a string. Non-printable characters must
+be shown as a backslash followed by their two-digit lowercase
+hexadecimal value (e.g. a newline becomes \\0a).
+
+Your function must be declared as follows:
+
+void	ft_putstr_non_printable(char *str);

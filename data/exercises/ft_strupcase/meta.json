@@ -1,0 +1,9 @@
+{
+  "name": "ft_strupcase",
+  "level": 4,
+  "type": "function",
+  "files": [
+    "ft_strupcase.c"
+  ],
+  "allowed_functions": []
+}

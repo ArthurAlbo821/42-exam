@@ -1,0 +1,9 @@
+{
+  "name": "ft_str_is_lowercase",
+  "level": 3,
+  "type": "function",
+  "files": [
+    "ft_str_is_lowercase.c"
+  ],
+  "allowed_functions": []
+}

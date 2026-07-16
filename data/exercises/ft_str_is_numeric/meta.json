@@ -1,0 +1,9 @@
+{
+  "name": "ft_str_is_numeric",
+  "level": 3,
+  "type": "function",
+  "files": [
+    "ft_str_is_numeric.c"
+  ],
+  "allowed_functions": []
+}

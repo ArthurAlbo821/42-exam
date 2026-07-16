@@ -1,0 +1,10 @@
+Assignment name  : ft_strncpy
+Expected files   : ft_strncpy.c
+Allowed functions: 
+--------------------------------------------------------------------------------
+
+Reproduce the behavior of the function strncpy (man strncpy).
+
+Your function must be declared as follows:
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n);

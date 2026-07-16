@@ -1,0 +1,12 @@
+Assignment name  : ft_str_is_numeric
+Expected files   : ft_str_is_numeric.c
+Allowed functions: 
+--------------------------------------------------------------------------------
+
+Create a function that returns 1 if the string contains only digits,
+and 0 otherwise.
+It must return 1 if str is empty.
+
+Your function must be declared as follows:
+
+int	ft_str_is_numeric(char *str);

@@ -1,0 +1,9 @@
+{
+  "name": "ft_strcapitalize",
+  "level": 9,
+  "type": "function",
+  "files": [
+    "ft_strcapitalize.c"
+  ],
+  "allowed_functions": []
+}

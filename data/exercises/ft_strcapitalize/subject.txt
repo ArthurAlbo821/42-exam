@@ -1,0 +1,12 @@
+Assignment name  : ft_strcapitalize
+Expected files   : ft_strcapitalize.c
+Allowed functions: 
+--------------------------------------------------------------------------------
+
+Create a function that capitalizes the first letter of each word and
+lowercases the rest. A word is a sequence of alphanumeric characters.
+It must return str.
+
+Your function must be declared as follows:
+
+char	*ft_strcapitalize(char *str);

@@ -1,0 +1,9 @@
+{
+  "name": "ft_str_is_printable",
+  "level": 3,
+  "type": "function",
+  "files": [
+    "ft_str_is_printable.c"
+  ],
+  "allowed_functions": []
+}

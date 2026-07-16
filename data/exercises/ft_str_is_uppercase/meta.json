@@ -1,0 +1,9 @@
+{
+  "name": "ft_str_is_uppercase",
+  "level": 3,
+  "type": "function",
+  "files": [
+    "ft_str_is_uppercase.c"
+  ],
+  "allowed_functions": []
+}

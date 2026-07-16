@@ -1,0 +1,9 @@
+{
+  "name": "ft_strlowcase",
+  "level": 4,
+  "type": "function",
+  "files": [
+    "ft_strlowcase.c"
+  ],
+  "allowed_functions": []
+}

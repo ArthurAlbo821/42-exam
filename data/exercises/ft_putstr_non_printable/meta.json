@@ -1,0 +1,11 @@
+{
+  "name": "ft_putstr_non_printable",
+  "level": 12,
+  "type": "function",
+  "files": [
+    "ft_putstr_non_printable.c"
+  ],
+  "allowed_functions": [
+    "write"
+  ]
+}

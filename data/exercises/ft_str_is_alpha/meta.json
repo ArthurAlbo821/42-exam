@@ -1,0 +1,9 @@
+{
+  "name": "ft_str_is_alpha",
+  "level": 3,
+  "type": "function",
+  "files": [
+    "ft_str_is_alpha.c"
+  ],
+  "allowed_functions": []
+}
