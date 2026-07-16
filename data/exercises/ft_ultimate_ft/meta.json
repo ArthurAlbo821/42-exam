@@ -1,0 +1,9 @@
+{
+  "name": "ft_ultimate_ft",
+  "level": 3,
+  "type": "function",
+  "files": [
+    "ft_ultimate_ft.c"
+  ],
+  "allowed_functions": []
+}

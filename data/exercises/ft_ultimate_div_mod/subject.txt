@@ -1,0 +1,11 @@
+Assignment name  : ft_ultimate_div_mod
+Expected files   : ft_ultimate_div_mod.c
+Allowed functions: 
+--------------------------------------------------------------------------------
+
+Write a function that divides the value pointed to by a by the value
+pointed to by b, stores the quotient in a and the remainder in b.
+
+Your function must be declared as follows:
+
+void	ft_ultimate_div_mod(int *a, int *b);

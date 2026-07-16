@@ -1,0 +1,11 @@
+Assignment name  : ft_div_mod
+Expected files   : ft_div_mod.c
+Allowed functions: 
+--------------------------------------------------------------------------------
+
+Write a function that divides a by b, stores the quotient in the int
+pointed to by div and the remainder in the int pointed to by mod.
+
+Your function must be declared as follows:
+
+void	ft_div_mod(int a, int b, int *div, int *mod);

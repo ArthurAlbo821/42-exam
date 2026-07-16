@@ -1,0 +1,12 @@
+Assignment name  : ft_ultimate_ft
+Expected files   : ft_ultimate_ft.c
+Allowed functions: 
+--------------------------------------------------------------------------------
+
+Write a function that takes a pointer to a pointer to a pointer to a
+pointer to a pointer to a pointer to a pointer to a pointer to a pointer
+to an int and sets its value to 42.
+
+Your function must be declared as follows:
+
+void	ft_ultimate_ft(int *********nbr);

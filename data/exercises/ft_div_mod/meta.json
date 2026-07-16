@@ -1,0 +1,9 @@
+{
+  "name": "ft_div_mod",
+  "level": 4,
+  "type": "function",
+  "files": [
+    "ft_div_mod.c"
+  ],
+  "allowed_functions": []
+}

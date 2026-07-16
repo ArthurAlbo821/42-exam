@@ -1,0 +1,9 @@
+{
+  "name": "ft_ft",
+  "level": 3,
+  "type": "function",
+  "files": [
+    "ft_ft.c"
+  ],
+  "allowed_functions": []
+}
