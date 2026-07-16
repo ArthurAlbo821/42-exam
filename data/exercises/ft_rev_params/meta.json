@@ -1,0 +1,49 @@
+{
+  "name": "ft_rev_params",
+  "level": 6,
+  "type": "program",
+  "files": [
+    "ft_rev_params.c"
+  ],
+  "allowed_functions": [
+    "write"
+  ],
+  "tests": [
+    {
+      "args": []
+    },
+    {
+      "args": [
+        "test1",
+        "test2",
+        "test3"
+      ]
+    },
+    {
+      "args": [
+        "only"
+      ]
+    },
+    {
+      "args": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ]
+    },
+    {
+      "args": [
+        "",
+        "x",
+        ""
+      ]
+    },
+    {
+      "args": [
+        "1",
+        "2"
+      ]
+    }
+  ]
+}

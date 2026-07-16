@@ -1,0 +1,12 @@
+Assignment name  : ft_strjoin
+Expected files   : ft_strjoin.c
+Allowed functions: malloc
+--------------------------------------------------------------------------------
+
+Write a function that concatenates all the strings in strs, separated
+by sep. size is the number of strings in strs. If size is 0, return an
+empty string that can be freed with free().
+
+Your function must be declared as follows:
+
+char	*ft_strjoin(int size, char **strs, char *sep);

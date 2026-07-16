@@ -1,0 +1,11 @@
+{
+  "name": "ft_strjoin",
+  "level": 14,
+  "type": "function",
+  "files": [
+    "ft_strjoin.c"
+  ],
+  "allowed_functions": [
+    "malloc"
+  ]
+}

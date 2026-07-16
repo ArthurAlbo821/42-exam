@@ -1,0 +1,15 @@
+Assignment name  : ft_convert_base
+Expected files   : ft_convert_base.c
+Allowed functions: malloc, free
+--------------------------------------------------------------------------------
+
+Write a function that returns nbr, read in base_from, converted to a
+newly allocated string in base_to. nbr follows the ft_atoi_base rules
+(leading whitespace, then '+'/'-' signs). If a base is invalid, return
+NULL. The result is prefixed by a single '-' only if negative.
+(Single-file version for this simulator; the official subject splits
+it into ft_convert_base.c and ft_convert_base2.c.)
+
+Your function must be declared as follows:
+
+char	*ft_convert_base(char *nbr, char *base_from, char *base_to);

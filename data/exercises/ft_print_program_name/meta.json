@@ -1,0 +1,27 @@
+{
+  "name": "ft_print_program_name",
+  "level": 4,
+  "type": "program",
+  "files": [
+    "ft_print_program_name.c"
+  ],
+  "allowed_functions": [
+    "write"
+  ],
+  "tests": [
+    {
+      "args": []
+    },
+    {
+      "args": [
+        "hello",
+        "world"
+      ]
+    },
+    {
+      "args": [
+        "x"
+      ]
+    }
+  ]
+}

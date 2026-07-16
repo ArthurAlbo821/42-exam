@@ -1,0 +1,48 @@
+{
+  "name": "ft_print_params",
+  "level": 4,
+  "type": "program",
+  "files": [
+    "ft_print_params.c"
+  ],
+  "allowed_functions": [
+    "write"
+  ],
+  "tests": [
+    {
+      "args": []
+    },
+    {
+      "args": [
+        "test1",
+        "test2",
+        "test3"
+      ]
+    },
+    {
+      "args": [
+        "only"
+      ]
+    },
+    {
+      "args": [
+        "",
+        "after empty"
+      ]
+    },
+    {
+      "args": [
+        "  spaced  ",
+        "tab\there"
+      ]
+    },
+    {
+      "args": [
+        "42",
+        "-",
+        "+",
+        "a b c"
+      ]
+    }
+  ]
+}

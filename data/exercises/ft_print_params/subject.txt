@@ -1,0 +1,13 @@
+Assignment name  : ft_print_params
+Expected files   : ft_print_params.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that displays its arguments (all except argv[0]),
+each on a new line, in the same order as on the command line.
+
+Example:
+
+$> ./a.out test1 test2 | cat -e
+test1$
+test2$

@@ -1,0 +1,7 @@
+Assignment name  : ft_rev_params
+Expected files   : ft_rev_params.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that displays its arguments (all except argv[0]),
+each on a new line, in reverse order from the command line.

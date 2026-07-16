@@ -1,0 +1,58 @@
+{
+  "name": "ft_sort_params",
+  "level": 9,
+  "type": "program",
+  "files": [
+    "ft_sort_params.c"
+  ],
+  "allowed_functions": [
+    "write"
+  ],
+  "tests": [
+    {
+      "args": []
+    },
+    {
+      "args": [
+        "banana",
+        "apple",
+        "cherry"
+      ]
+    },
+    {
+      "args": [
+        "Zebra",
+        "apple",
+        "Apple",
+        "zebra"
+      ]
+    },
+    {
+      "args": [
+        "one"
+      ]
+    },
+    {
+      "args": [
+        "c",
+        "b",
+        "a"
+      ]
+    },
+    {
+      "args": [
+        "",
+        "b",
+        "a"
+      ]
+    },
+    {
+      "args": [
+        "42",
+        "7",
+        "100",
+        "3"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "ft_convert_base",
+  "level": 17,
+  "type": "function",
+  "files": [
+    "ft_convert_base.c"
+  ],
+  "allowed_functions": [
+    "malloc",
+    "free"
+  ]
+}

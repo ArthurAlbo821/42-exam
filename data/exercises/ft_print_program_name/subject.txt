@@ -1,0 +1,12 @@
+Assignment name  : ft_print_program_name
+Expected files   : ft_print_program_name.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that displays its own name (argv[0]), followed by a
+newline.
+
+Example:
+
+$> ./a.out | cat -e
+./a.out$

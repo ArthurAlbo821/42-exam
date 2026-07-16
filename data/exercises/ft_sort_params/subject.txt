@@ -1,0 +1,7 @@
+Assignment name  : ft_sort_params
+Expected files   : ft_sort_params.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that displays its arguments (all except argv[0])
+sorted in ASCII order, each on a new line.
