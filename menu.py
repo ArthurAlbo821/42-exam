@@ -157,6 +157,35 @@ def stats_screen():
     pause()
 
 
+def update_screen():
+    ui.frame("MISE À JOUR")
+    print()
+    repo = os.path.dirname(os.path.abspath(__file__))
+    if not os.path.isdir(os.path.join(repo, ".git")):
+        print(f"  {ui.YELLOW}Ce dossier n'est pas un dépôt git —{RESET}")
+        print(f"  {DIM}impossible de mettre à jour automatiquement.{RESET}")
+        pause()
+        return
+    with ui.Spinner("Récupération de la dernière version"):
+        res = ex.run(["git", "-C", repo, "pull", "--ff-only"])
+    out = ((res.stdout or "") + (res.stderr or "")).strip()
+    for line in out.splitlines():
+        print(f"  {DIM}{line}{RESET}")
+    if res.returncode != 0:
+        print(f"\n  {ui.RED}{BOLD}Échec de la mise à jour.{RESET}")
+        print(f"  {DIM}Vérifie ta connexion, ou fais 'git pull' à la main.{RESET}")
+        pause()
+        return
+    if "up to date" in out.lower() or "à jour" in out.lower():
+        print(f"\n  {ui.GREEN}{BOLD}Déjà à jour ✔{RESET}")
+        pause()
+        return
+    print(f"\n  {ui.GREEN}{BOLD}Mise à jour installée ✔{RESET}"
+          f"  {DIM}redémarrage…{RESET}")
+    pause()
+    os.execv(sys.executable, [sys.executable] + sys.argv)
+
+
 def main():
     while True:
         os.system("clear" if sys.stdout.isatty() else "true")
@@ -165,6 +194,7 @@ def main():
             ("🏊", "Examen blanc", "simulation complète · 100 pts · chrono"),
             ("💪", "Entraînement", "en boucle · faiblesses d'abord · records"),
             ("📊", "Statistiques", "maîtrise, records, historique des scores"),
+            ("🔄", "Mise à jour", "récupérer la dernière version (git pull)"),
             ("✕", "Quitter", ""),
         ]
         pick = choose("Que veux-tu faire ?", items)
@@ -176,6 +206,8 @@ def main():
                 pause()
         elif pick == 2:
             stats_screen()
+        elif pick == 3:
+            update_screen()
         else:
             print(f"  {DIM}À bientôt — bon courage pour l'examen !{RESET}\n")
             return
