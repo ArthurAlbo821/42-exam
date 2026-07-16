@@ -258,7 +258,8 @@ def check_forbidden(objects, allowed):
     for obj in objects:
         res = run(["nm", "-u", obj])
         for line in res.stdout.splitlines():
-            sym = line.strip()
+            parts = line.split()
+            sym = parts[-1].split("@")[0] if parts else ""
             if sym and sym not in allowed_syms:
                 bad.add(sym.lstrip("_"))
     if bad:
