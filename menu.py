@@ -193,6 +193,7 @@ def main():
         items = [
             ("🏊", "Examen blanc", "simulation complète · 100 pts · chrono"),
             ("💪", "Entraînement", "en boucle · faiblesses d'abord · records"),
+            ("🔁", "Rattrapage", "refaire tes exos non-acquis pour les valider"),
             ("📊", "Statistiques", "maîtrise, records, historique des scores"),
             ("🔄", "Mise à jour", "récupérer la dernière version (git pull)"),
             ("✕", "Quitter", ""),
@@ -205,8 +206,11 @@ def main():
             if drill_menu():
                 pause()
         elif pick == 2:
-            stats_screen()
+            drill.repl("60", rattrapage=True)
+            pause()
         elif pick == 3:
+            stats_screen()
+        elif pick == 4:
             update_screen()
         else:
             print(f"  {DIM}À bientôt — bon courage pour l'examen !{RESET}\n")

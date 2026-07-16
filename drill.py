@@ -96,6 +96,63 @@ def pick_exercise(pool, stats):
     return random.choice(names), "tout est acquis — révision libre 💪"
 
 
+def redo_pool(pool, stats):
+    """Exercices déjà tentés mais pas encore acquis — ◐ en cours et
+    ○ à retravailler — triés par niveau croissant."""
+    return [n for n in sorted(pool, key=lambda n: (pool[n]["level"], n))
+            if status_of(stats["exercises"].get(n)) in ("wip", "todo")]
+
+
+def next_redo(pool, stats, exclude=None):
+    """Prochain exo à rattraper, différent du dernier si possible."""
+    names = redo_pool(pool, stats)
+    others = [n for n in names if n != exclude]
+    if others:
+        return others[0]
+    return names[0] if names else None
+
+
+def advance(pool, stats, rattrapage, just_done=None):
+    """Choisit le prochain exercice après une réussite ou un skip.
+    En rattrapage, enchaîne sur le prochain non-acquis ; quand il n'en
+    reste plus, fête l'événement et repasse en entraînement normal."""
+    if rattrapage:
+        nxt = next_redo(pool, stats, exclude=just_done)
+        if nxt:
+            return nxt, "rattrapage", True
+        ui.celebrate("RATTRAPAGE TERMINÉ — tout est acquis")
+        print(f" {DIM}Retour à l'entraînement normal.{RESET}\n")
+    name, reason = pick_exercise(pool, stats)
+    return name, reason, False
+
+
+def choose_redo(pool, stats):
+    """Affiche la liste des exos à rattraper et renvoie le nom choisi
+    (ou None si liste vide / annulation)."""
+    names = redo_pool(pool, stats)
+    if not names:
+        print(f"\n {GREEN}Rien à rattraper : tout ce que tu as touché "
+              f"est déjà acquis ! 🎉{RESET}\n")
+        return None
+    print(f"\n {BOLD}Exercices à rattraper{RESET}  "
+          f"{DIM}◐ en cours · ○ à retravailler{RESET}\n")
+    for i, n in enumerate(names, 1):
+        e = stats["exercises"][n]
+        best = ex.fmt_duration(e["best_time"]) if e["best_time"] else "—"
+        print(f"  {DIM}[{i:>2}]{RESET} {pastille(e)} {BOLD}{n:<24}{RESET}"
+              f"{DIM}niv {pool[n]['level']:>2}   {RESET}"
+              f"{GREEN}{e['passes']}✓{RESET} {RED}{e['fails']}✗{RESET}"
+              f"   {DIM}best {best}{RESET}")
+    try:
+        ans = input(f"\n {CYAN}{BOLD}Numéro à refaire "
+                    f"(entrée = annuler) ❯{RESET} ").strip()
+    except (EOFError, KeyboardInterrupt):
+        return None
+    if ans.isdigit() and 1 <= int(ans) <= len(names):
+        return names[int(ans) - 1]
+    return None
+
+
 def archive_exercise(name):
     """Move entrainement/<name> to the archive (drill keeps only the
     current exercise visible)."""
@@ -249,6 +306,7 @@ HELP = f"""
 Commandes du mode entraînement :
   {BOLD}grademe{RESET}   corrige l'exercice en cours (chronométré)
   {BOLD}skip{RESET}      passe à un autre exercice (compte comme une faiblesse)
+  {BOLD}redo{RESET}      liste tes exos non-acquis et enchaîne-les jusqu'à validation
   {BOLD}subject{RESET}   réaffiche le sujet
   {BOLD}code{RESET}      ouvre le dossier de l'exercice dans VS Code
   {BOLD}stats{RESET}     tableau de maîtrise des exercices de la zone
@@ -327,10 +385,11 @@ def finish_session(pool, stats, zone, session_passed, start_acquired,
           f"à la prochaine session !{RESET}\n")
 
 
-def repl(zone="60"):
+def repl(zone="60", rattrapage=False):
     pool = drill_pool(ex.load_exercises(), zone)
     stats = load_stats()
-    ui.show_banner("MODE ENTRAÎNEMENT · " + ZONES[zone])
+    ui.show_banner(("RATTRAPAGE · " if rattrapage else "MODE ENTRAÎNEMENT · ")
+                   + ZONES[zone])
     start_acquired = acquired_count(pool, stats)
     session_passed = []
     session_start = time.monotonic()
@@ -338,7 +397,12 @@ def repl(zone="60"):
     print(f"\n {ui.DIM}Objectif : tout en ✓. "
           f"Tape 'help' pour les commandes.{RESET}\n")
 
-    if stats["current"] and stats["current"]["name"] in pool:
+    if rattrapage:
+        choice = choose_redo(pool, stats)
+        if not choice:
+            return
+        meta = assign(stats, pool, choice, "rattrapage")
+    elif stats["current"] and stats["current"]["name"] in pool:
         name = stats["current"]["name"]
         print(f"Reprise de l'exercice en cours : {BOLD}{name}{RESET} "
               f"(ton code est toujours dans entrainement/{name}/)")
@@ -358,7 +422,8 @@ def repl(zone="60"):
         if cmd == "grademe":
             if grade_current(stats, meta, started):
                 session_passed.append(meta["name"])
-                name, reason = pick_exercise(pool, stats)
+                name, reason, rattrapage = advance(
+                    pool, stats, rattrapage, meta["name"])
                 meta = assign(stats, pool, name, reason)
                 started = time.monotonic()
         elif cmd == "skip":
@@ -374,9 +439,23 @@ def repl(zone="60"):
             archive_exercise(meta["name"])
             print(f"{YELLOW}{meta['name']} passé — "
                   f"il reviendra en priorité.{RESET}")
-            name, reason = pick_exercise(pool, stats)
+            name, reason, rattrapage = advance(
+                pool, stats, rattrapage, meta["name"])
             meta = assign(stats, pool, name, reason)
             started = time.monotonic()
+        elif cmd == "redo":
+            choice = choose_redo(pool, stats)
+            if choice:
+                cur = stats["current"]
+                if cur:
+                    stats["total_seconds"] = (stats.get("total_seconds", 0.0)
+                                              + cur["elapsed"]
+                                              + (time.monotonic() - started))
+                stats["current"] = None
+                save_stats(stats)
+                rattrapage = True
+                meta = assign(stats, pool, choice, "rattrapage")
+                started = time.monotonic()
         elif cmd == "subject":
             e = entry(stats, meta["name"])
             best = ex.fmt_duration(e["best_time"]) if e["best_time"] else "—"
