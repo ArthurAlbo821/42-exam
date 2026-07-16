@@ -234,7 +234,10 @@ def compile_objects(c_files, out_dir, tag, include=None):
     for src in c_files:
         obj = os.path.join(out_dir, tag + "_" +
                            os.path.basename(src).replace(".c", ".o"))
-        res = run([CC, *CFLAGS, *inc, "-c", src, "-o", obj])
+        # -fno-builtin keeps printf/etc. from being lowered to puts/putchar,
+        # so the forbidden-function check (nm on these objects) sees the
+        # functions the student actually called, not compiler substitutions.
+        res = run([CC, *CFLAGS, "-fno-builtin", *inc, "-c", src, "-o", obj])
         if res.returncode != 0:
             raise GradeFailure(
                 f"Compilation failed ({os.path.basename(src)})",
