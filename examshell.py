@@ -272,10 +272,14 @@ def check_forbidden(objects, allowed):
             + (", ".join(allowed) if allowed else "(none)"))
 
 
-def run_binary(path, args=None, stdin_data=None):
+def run_binary(path, args=None, stdin_data=None, argv0=None):
+    # argv0 lets us give both the reference and the student binary the same
+    # argv[0] (they live at different paths), so programs that print their own
+    # name — e.g. ft_print_program_name — are graded on identical input.
     try:
         res = subprocess.run(
-            [path] + (args or []), input=stdin_data,
+            [argv0 or path] + (args or []), executable=path,
+            input=stdin_data,
             capture_output=True, text=True, errors="replace",
             timeout=TEST_TIMEOUT)
     except subprocess.TimeoutExpired:
@@ -349,15 +353,19 @@ def grade(meta, workdir=None):
         ref_bin = link(ref_objs, os.path.join(BUILD_DIR, "ref_bin"))
         tests = meta.get("tests", [{"args": []}])
 
+    # Programs are run with a fixed argv[0] so argv[0]-dependent output is
+    # comparable between the reference and the student binary.
+    prog_argv0 = "./a.out" if meta["type"] != "function" else None
+
     failures = []
     for i, test in enumerate(tests, 1):
         args = test.get("args", [])
         stdin_data = test.get("stdin")
-        expected, ref_err = run_binary(ref_bin, args, stdin_data)
+        expected, ref_err = run_binary(ref_bin, args, stdin_data, prog_argv0)
         if ref_err:
             raise GradeFailure("Internal error: reference program failed",
                                ref_err)
-        got, err = run_binary(user_bin, args, stdin_data)
+        got, err = run_binary(user_bin, args, stdin_data, prog_argv0)
         label = f"test {i}: ./{meta['name']} " + " ".join(
             repr(a) for a in args)
         if stdin_data is not None:
