@@ -224,7 +224,8 @@ class GradeFailure(Exception):
 
 
 def run(cmd, **kw):
-    return subprocess.run(cmd, capture_output=True, text=True, **kw)
+    return subprocess.run(cmd, capture_output=True, text=True,
+                          errors="replace", **kw)
 
 
 def compile_objects(c_files, out_dir, tag, include=None):
@@ -273,7 +274,8 @@ def run_binary(path, args=None, stdin_data=None):
     try:
         res = subprocess.run(
             [path] + (args or []), input=stdin_data,
-            capture_output=True, text=True, timeout=TEST_TIMEOUT)
+            capture_output=True, text=True, errors="replace",
+            timeout=TEST_TIMEOUT)
     except subprocess.TimeoutExpired:
         return None, "TIMEOUT"
     if res.returncode < 0:
