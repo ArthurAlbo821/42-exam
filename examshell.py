@@ -251,17 +251,19 @@ def link(objects, out_path):
 
 
 def check_forbidden(objects, allowed):
-    allowed_syms = set(BASE_ALLOWED_SYMBOLS)
+    # Compare on the underscore-stripped form so compiler-injected symbols
+    # match whether they carry the macOS ('___stack_chk_fail') or Linux
+    # ('__stack_chk_fail') number of leading underscores.
+    allowed_syms = {s.lstrip("_") for s in BASE_ALLOWED_SYMBOLS}
     for fn in allowed:
-        allowed_syms.add("_" + fn)
-        allowed_syms.add(fn)
+        allowed_syms.add(fn.lstrip("_"))
     bad = set()
     for obj in objects:
         res = run(["nm", "-u", obj])
         for line in res.stdout.splitlines():
             parts = line.split()
             sym = parts[-1].split("@")[0] if parts else ""
-            if sym and sym not in allowed_syms:
+            if sym and sym.lstrip("_") not in allowed_syms:
                 bad.add(sym.lstrip("_"))
     if bad:
         raise GradeFailure(
