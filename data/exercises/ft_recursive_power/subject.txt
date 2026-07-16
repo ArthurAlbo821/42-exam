@@ -1,0 +1,11 @@
+Assignment name  : ft_recursive_power
+Expected files   : ft_recursive_power.c
+Allowed functions: 
+--------------------------------------------------------------------------------
+
+Create a recursive function that returns nb raised to the given power.
+If power is negative, return 0. By definition 0 to the power 0 is 1.
+
+Your function must be declared as follows:
+
+int	ft_recursive_power(int nb, int power);

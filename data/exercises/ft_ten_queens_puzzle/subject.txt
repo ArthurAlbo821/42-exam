@@ -1,0 +1,14 @@
+Assignment name  : ft_ten_queens_puzzle
+Expected files   : ft_ten_queens_puzzle.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Create a function that displays all the solutions to the ten-queens
+puzzle on a 10x10 board (no two queens attacking each other) and
+returns the number of solutions. Each solution is printed as ten
+digits: the i-th digit is the row of the queen in column i, followed
+by a newline. Recursion is required.
+
+Your function must be declared as follows:
+
+int	ft_ten_queens_puzzle(void);

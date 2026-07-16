@@ -1,0 +1,11 @@
+Assignment name  : ft_putnbr
+Expected files   : ft_putnbr.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Create a function that displays the number passed as a parameter.
+The function must be able to handle all possible values of the int type.
+
+Your function must be declared as follows:
+
+void	ft_putnbr(int nb);

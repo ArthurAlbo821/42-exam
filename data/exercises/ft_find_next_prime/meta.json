@@ -1,0 +1,9 @@
+{
+  "name": "ft_find_next_prime",
+  "level": 11,
+  "type": "function",
+  "files": [
+    "ft_find_next_prime.c"
+  ],
+  "allowed_functions": []
+}

@@ -1,0 +1,11 @@
+Assignment name  : ft_is_prime
+Expected files   : ft_is_prime.c
+Allowed functions: 
+--------------------------------------------------------------------------------
+
+Create a function that returns 1 if the given number is prime, 0 if not.
+0 and 1 are not prime numbers.
+
+Your function must be declared as follows:
+
+int	ft_is_prime(int nb);

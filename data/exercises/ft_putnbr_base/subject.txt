@@ -1,0 +1,13 @@
+Assignment name  : ft_putnbr_base
+Expected files   : ft_putnbr_base.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Create a function that displays a number in a given base.
+The base is a string of the symbols used to represent the number.
+Handle negative numbers. If the base is invalid (empty, one character,
+duplicate characters, or contains '+' or '-'), nothing is displayed.
+
+Your function must be declared as follows:
+
+void	ft_putnbr_base(int nbr, char *base);

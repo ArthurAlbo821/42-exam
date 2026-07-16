@@ -1,0 +1,9 @@
+{
+  "name": "ft_is_prime",
+  "level": 10,
+  "type": "function",
+  "files": [
+    "ft_is_prime.c"
+  ],
+  "allowed_functions": []
+}

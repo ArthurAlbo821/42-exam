@@ -1,0 +1,9 @@
+{
+  "name": "ft_recursive_power",
+  "level": 5,
+  "type": "function",
+  "files": [
+    "ft_recursive_power.c"
+  ],
+  "allowed_functions": []
+}

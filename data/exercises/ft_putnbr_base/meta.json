@@ -1,0 +1,11 @@
+{
+  "name": "ft_putnbr_base",
+  "level": 10,
+  "type": "function",
+  "files": [
+    "ft_putnbr_base.c"
+  ],
+  "allowed_functions": [
+    "write"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "ft_ten_queens_puzzle",
+  "level": 18,
+  "type": "function",
+  "files": [
+    "ft_ten_queens_puzzle.c"
+  ],
+  "allowed_functions": [
+    "write"
+  ]
+}

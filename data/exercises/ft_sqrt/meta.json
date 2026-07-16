@@ -1,0 +1,9 @@
+{
+  "name": "ft_sqrt",
+  "level": 10,
+  "type": "function",
+  "files": [
+    "ft_sqrt.c"
+  ],
+  "allowed_functions": []
+}
